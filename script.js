@@ -5,7 +5,7 @@
 /*              */
 /*  WINDOW LOAD */
 /*              */
-const tempOverlay = "<div id='wip-overlay class='body-overlay' flex-center'><p>Work In Progress</p></div>";
+const tempOverlay = "<div id='wip-overlay' class='body-overlay flex-center'><p>Work In Progress</p></div>";
 window.onload = () => {
     document.body.innerHTML += tempOverlay;
     document.body.style.position = "relative";
