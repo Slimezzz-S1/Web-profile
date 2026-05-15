@@ -28,6 +28,7 @@ section
 {
     width: 100%;
     min-height: 100vh;
+    background: black;
 }
 
 .body-overlay
@@ -49,16 +50,73 @@ section
     align-items: center;
 }
 
-.hidden
-{
-    opacity: 0%;
-    display: none;
-}
-
 .section-body
 {
     width: 100%;
     height: 100%;
+}
+
+/*          */
+/*  OBJECTS */
+/*          */
+
+.button-w-background
+{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+
+    color: black;
+    background: white;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s cubic-bezier(0.075, 0.82, 0.165, 1),
+        background .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.button-w-background:hover
+{
+    background: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.button-w-background:active
+{
+    background: #c0c0c0;
+    transform: scale(0.95);
+}
+
+.button-wo-background
+{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+
+    color: white;
+    background: none;
+    border: 1px solid white;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s cubic-bezier(0.075, 0.82, 0.165, 1),
+        border-color .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.button-wo-background:hover
+{
+    border-color: #e0e0e0;
+    color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.button-wo-background:active
+{
+    border-color: #c0c0c0;
+    color: #c0c0c0;
+    transform: scale(0.95);
 }
 
 /*          */
@@ -67,13 +125,23 @@ section
 
 header
 {
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 90px;
     padding: 0 0 0 5vw;
     background: #3aa513;
+    z-index: 999;
 
     display: flex;
     justify-content: space-around;
+
+    transition: transform .4s ease;
+}
+
+header.hidden
+{
+    transform: translateY(-100%);
 }
 
 /*              */
@@ -127,6 +195,8 @@ header .header-right
 .nav-header
 {
     transition: left .5s ease;
+    overflow: hidden;
+    padding-left: 5vw;
 }
 
 .nav-header,
@@ -142,8 +212,6 @@ header .nav-links
     justify-content: space-evenly;
     
     background: linear-gradient(90deg, rgba(0, 0, 0, 0) 10%, #59d92a 11%);
-
-    padding: 0 5vw 0 0;
 }
 
 header .nav-links li
@@ -188,42 +256,97 @@ header .nav-links li:hover
     transform: skewX(-15deg) scaleX(1.1) translateX(-5%);
 }
 
-#nav-menu,
+#nav-menu-checkbox,
 .nav-menu-bar-wrapper
 {
     display: none;
 }
 
 /*          */
-/*  home    */
+/*  HOME    */
 /*          */
 
 #home
 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 
-    padding: 0 5%;
+    background: url('Media/Pictures/main.png') no-repeat center center;
+    background-size: cover;
+}
+
+#home .section-body
+{
+    width: 100%;
+    min-height: 100vh;
+    padding: 30vw 5vw 5vw 5vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 0) 85%);
+}
+
+#home h1,
+#home p
+{
+    color: white;
+}
+
+#home #main-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #home h1
 {
     font-size: 50px;
-    color: white;
     text-align: center;
-
-    border: #3aa513 5px solid;
 }
 
-#home *
+#home p
 {
-    border: #3aa513 5px solid;
+    font-size: 20px;
+}
+
+#home #main-actions
+{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#home #main-actions button
+{
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+/*              */
+/*  SERVICES    */
+/*              */
+
+#services .section-body
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 
 
+/*  DEBUG   */
+#services * {border: red 1px solid}
+#services {border: green 1px solid}
 
 /*          */
 /*  MEDIA   */
@@ -235,7 +358,7 @@ header .nav-links li:hover
     /*  HEADER  */
     /*          */
 
-    #nav-menu:checked ~ .nav-header
+    #nav-menu-checkbox:checked ~ .nav-header
     {
         left: 100%;
     }
@@ -252,24 +375,24 @@ header .nav-links li:hover
     /*  HEADER  */
     /*          */
 
-    header .right
+    header .header-right
     {
         padding: 0 5vw 0 0;
     }
 
-    #nav-menu:checked ~ .nav-header
+    #nav-menu-checkbox:checked ~ .nav-header
     {
         left: 50%;
     }
 
-    #nav-menu:checked ~ .nav-menu-bar-wrapper
+    #nav-menu-checkbox:checked ~ .nav-menu-bar-wrapper
     {
         transform: rotateZ(90deg);
     }
 
     .nav-header
     {
-        position: absolute;
+        position: fixed;
         top: 90px;
         left: 100%;
         width: 50vw;
