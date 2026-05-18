@@ -2,6 +2,32 @@
 /*  ROOT    */
 /*          */
 
+:root
+{
+    --main-color: rgb(151 223 252);
+    --second-color: rgb(133 138 227);
+    --accent-color: rgb(97 61 193);
+    --accent2-color: rgb(78 20 140);
+
+    --header-background: var(--accent-color);
+    --main-background: temp;
+    --footer-background: var(--accent2-color);
+
+    --nav-header-button-color: var(--second-color);
+    --nav-header-button-hover-color: rgb(71, 46, 151);
+
+    --home-section-background: black;
+    --services-section-background: var(--accent2-color);
+    --about-section-background: var(--second-color);
+    --portfolio-section-background: temp;
+    --team-section-background: temp;
+    --contact-background: temp;
+
+    --service-card-background: var(--accent-color);
+
+    --initial-vh: 0;
+}
+
 *
 {
     margin: 0;
@@ -24,10 +50,10 @@ body
     background: #3c3c3c;
 }
 
-section
+section:not(.custom-section)
 {
     width: 100%;
-    min-height: 100vh;
+    padding: 4rem 2rem;
     background: black;
 }
 
@@ -136,12 +162,12 @@ header
     width: 100%;
     height: 90px;
     padding: 0 0 0 5vw;
-    background: #3aa513;
     z-index: 999;
 
     display: flex;
     justify-content: space-around;
 
+    background: var(--header-background);
     transition: top .4s ease;
 }
 
@@ -211,7 +237,7 @@ header .nav-links
     display: flex;
     justify-content: space-evenly;
     
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 10%, #59d92a 11%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 10%, var(--nav-header-button-color) 11%);
 }
 
 header .nav-links li
@@ -220,7 +246,7 @@ header .nav-links li
     cursor: pointer;
     list-style: none;
 
-    background: #59d92a;
+    background: var(--nav-header-button-color);
 
     transition:
         transform .3s ease,
@@ -252,7 +278,7 @@ header .nav-links li > *
 
 header .nav-links li:hover
 {
-    background: #71e647;
+    background: var(--nav-header-button-hover-color);
     transform: skewX(-15deg) scaleX(1.1) translateX(-5%);
 }
 
@@ -278,7 +304,10 @@ header .nav-links li:hover
 #home .section-body
 {
     width: 100%;
-    min-height: 100vh;
+
+    /*height set by TS*/
+    min-height: var(--initial-vh);
+
     padding: 30vw 5vw 5vw 5vw;
 
     display: flex;
@@ -287,7 +316,7 @@ header .nav-links li:hover
     align-items: center;
     gap: 20px;
 
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 0) 85%);
+    background: linear-gradient(0deg, var(--services-section-background) 35%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 0) 85%);
 }
 
 #home h1,
@@ -335,6 +364,11 @@ header .nav-links li:hover
 /*  SERVICES    */
 /*              */
 
+#services
+{
+    background: var(--services-section-background);
+}
+
 #services .section-body
 {
     display: flex;
@@ -363,7 +397,7 @@ header .nav-links li:hover
     max-height: 1000px;
     padding: 10px;
 
-    background: #3c4d87;
+    background: var(--service-card-background);
     border-radius: 10px;
     overflow: hidden;
     z-index: 0;
@@ -435,8 +469,12 @@ header .nav-links li:hover
 
 #about .section-body
 {
+    height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 #about .section-left,
@@ -445,10 +483,57 @@ header .nav-links li:hover
     flex: 1;
 }
 
+#about .section-left
+{
+    background: url(Media/Pictures/main.png);
+    background-position: center;
+    background-size: cover;
+}
+
+#about .section-left #about-background-gradient
+{
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(-90deg, var(--about-section-background), rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 60%);
+    z-index: 2;
+}
+
+#about .section-right
+{
+    position: relative;
+    padding: 15px;
+
+    background-color: var(--about-section-background);
+}
+
+#about .section-right #about-background-gradient
+{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(-90deg, var(--about-section-background)5%, rgba(0, 0, 0, 0) 50%);
+}
+
+#about .section-right #about-content
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 25px;
+}
+
 #about .section-right *
 {
     color: white;
 }
+
+
 
 /*          */
 /*  FOOTER  */
@@ -460,6 +545,9 @@ footer
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    background: var(--footer-background);
+    color: white;
 }
 
 footer .footer-left,

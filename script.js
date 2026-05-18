@@ -1,30 +1,19 @@
 "use strict";
 /*          */
+/*  ROOT    */
+/*          */
+const initialVh = window.innerHeight;
+document.documentElement.style.setProperty('--initial-vh', 'blue');
+const homeSection = document.querySelector('#home');
+homeSection.style.height = initialVh - 90 + 'px';
+/*          */
 /*  HEADER  */
 /*          */
-const navHome = document.querySelector('#nav-home');
-const navServices = document.querySelector('#nav-services');
-const navAbout = document.querySelector('#nav-about');
-const navPortfolio = document.querySelector('#nav-portfolio');
-const navTeam = document.querySelector('#nav-team');
-const navContact = document.querySelector('#nav-contact');
-navHome.addEventListener('click', () => {
-    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
-});
-navServices.addEventListener('click', () => {
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-});
-navAbout.addEventListener('click', () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-});
-navPortfolio.addEventListener('click', () => {
-    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
-});
-navTeam.addEventListener('click', () => {
-    document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' });
-});
-navContact.addEventListener('click', () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+const navHeaderButtons = document.querySelectorAll('.nav-header-button');
+navHeaderButtons.forEach(navHeaderButton => {
+    navHeaderButton.addEventListener('click', () => {
+        document.getElementById(navHeaderButton.id.replace('nav-', ''))?.scrollIntoView({ behavior: 'smooth' });
+    });
 });
 const header = document.querySelector('header');
 const navMenuCheckbox = document.querySelector('#nav-menu-checkbox');

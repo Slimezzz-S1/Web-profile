@@ -1,42 +1,25 @@
 /*          */
+/*  ROOT    */
+/*          */
+
+const initialVh :number = window.innerHeight as number
+document.documentElement.style.setProperty('--initial-vh', 'blue')
+
+const homeSection = document.querySelector('#home') as HTMLDivElement
+
+
+homeSection.style.height = initialVh - 90 + 'px'
+
+/*          */
 /*  HEADER  */
 /*          */
 
-const navHome = document.querySelector('#nav-home') as HTMLAnchorElement
-const navServices = document.querySelector('#nav-services') as HTMLAnchorElement
-const navAbout = document.querySelector('#nav-about') as HTMLAnchorElement
-const navPortfolio = document.querySelector('#nav-portfolio') as HTMLAnchorElement
-const navTeam = document.querySelector('#nav-team') as HTMLAnchorElement
-const navContact = document.querySelector('#nav-contact') as HTMLAnchorElement
-
-navHome.addEventListener('click', () =>
+const navHeaderButtons = document.querySelectorAll('.nav-header-button') as NodeListOf<HTMLAnchorElement>
+navHeaderButtons.forEach(navHeaderButton =>
 {
-    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
-})
-
-navServices.addEventListener('click', () =>
-{
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
-})
-
-navAbout.addEventListener('click', () =>
-{
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
-})
-
-navPortfolio.addEventListener('click', () =>
-{
-    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })
-})
-
-navTeam.addEventListener('click', () =>
-{
-    document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })
-})
-
-navContact.addEventListener('click', () =>
-{
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    navHeaderButton.addEventListener('click', () => {
+        document.getElementById(navHeaderButton.id.replace('nav-', ''))?.scrollIntoView({behavior : 'smooth'})
+    })
 })
 
 
