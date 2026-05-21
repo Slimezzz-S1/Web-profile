@@ -47,6 +47,7 @@
 
     /*  teams   */
     --team-card-background: black;
+    --team-card-button-border-color: white;
 
     /*  misc    */
     --initial-vh: 1080;
@@ -140,6 +141,22 @@ section:not(.custom-section) > h1
 }
 
 .interactive-button:active
+{
+    transform: scale(0.95);
+}
+
+.interactive-card
+{
+    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.interactive-card:hover
+{
+    transform: scale(1.05);
+    animation: breathingCard .7s ease infinite alternate;
+}
+
+.interactive-card:active
 {
     transform: scale(0.95);
 }
@@ -360,6 +377,11 @@ header .nav-links li:hover
     background-size: cover;
 }
 
+#home #main-title
+{
+    animation: breathingText .7s ease infinite alternate;
+}
+
 #home .section-body
 {
     width: 100%;
@@ -562,15 +584,6 @@ header .nav-links li:hover
     background: url(Media/Pictures/main.png);
     background-position: center;
     background-size: cover;
-}
-
-#about .section-left #about-background-gradient
-{
-    width: 100%;
-    height: 100%;
-
-    background: linear-gradient(-90deg, var(--about-section-background), rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 60%);
-    z-index: 2;
 }
 
 #about .section-right
@@ -836,16 +849,18 @@ header .nav-links li:hover
 {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 #team #team-cards .team-card
 {
     position: relative;
-    width: 300px;
+    width: 400px;
     border-radius: 30px;
     overflow: hidden;
-    background: red;
+    background: var(--team-card-background);
 }
 
 #team #team-cards .team-card .team-card-image,
@@ -867,7 +882,8 @@ header .nav-links li:hover
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 60% 15px 10px 15px;
+    align-items: center;
+    padding: 80% 15px 10px 15px;
 
     background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0) 60%);
     background-size: 100% 120%;
@@ -879,10 +895,14 @@ header .nav-links li:hover
     color: white;
 }
 
-#team #team-cards .team-card .team-card-overlay,
-#team #team-cards .team-card .team-card-overlay *
+#team #team-cards .team-card .team-card-overlay > *
 {
-    border: blue solid 0px;
+    height: 80px;
+}
+
+#team #team-cards .team-card .team-card-overlay h2
+{
+    text-align: center;
 }
 
 #team #team-cards .team-card .team-card-overlay .team-card-socials
@@ -890,12 +910,24 @@ header .nav-links li:hover
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 20px;
 }
 
 #team #team-cards .team-card .team-card-overlay .team-card-socials a
 {
     width: 30px;
     height: 30px;
+    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-socials a:hover
+{
+    transform: scale(1.1);
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-socials a:active
+{
+    transform: scale(.9);
 }
 
 #team #team-cards .team-card .team-card-overlay .team-card-socials a img
@@ -903,6 +935,15 @@ header .nav-links li:hover
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-actions button
+{
+    width: 100%;
+    padding: 10px 20px;
+    background: none;
+    border: var(--team-card-button-border-color) 1px solid;
+    border-radius: 10px;
 }
 
 
@@ -1144,13 +1185,52 @@ footer .footer-right
     {
         width: 100%;
     }
+
+    /*          */
+    /*  ABOUT   */
+    /*          */
+
+    #about .section-body
+    {
+        flex-direction: column;
+    }
+
+    #about .section-right #about-background-gradient
+    {
+        position: absolute;
+        top: -100%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: linear-gradient(0deg, var(--about-section-background)5%, rgba(0, 0, 0, 0) 50%);
+    }
 }
 
 
-@media (max-width: 500px)
+/*  KEYFRAMES   */
+
+@keyframes breathingText
 {
-    /*          */
-    /*  HEADER  */
-    /*          */
-    /*  HOME    */
+    from
+    {
+        text-shadow: 0 0 10px white;
+    }
+
+    to
+    {
+        text-shadow: 0 0 20px white;
+    }
+}
+
+@keyframes breathingCard
+{
+    from
+    {
+        box-shadow: 0 0 0px white;
+    }
+    to
+    {
+        box-shadow: 0 0 20px white;
+    }
 }

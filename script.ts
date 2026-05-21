@@ -91,7 +91,6 @@ homeButtons[0].addEventListener('click', () =>
     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
 })
 
-
 /*          */
 /*  ABOUT   */
 /*          */
@@ -165,6 +164,31 @@ aboutCards.forEach(aboutCard =>
         aboutCard['amount'],
     )
 })
+
+/*          */
+/*  TEAMS   */
+/*          */
+
+function loadLocalIcons()
+{
+    const githubLinks = document.querySelectorAll('.github-icon') as NodeListOf<HTMLAnchorElement>;
+    const youtubeLinks = document.querySelectorAll('.youtube-icon') as NodeListOf<HTMLAnchorElement>;
+    const instagramLinks = document.querySelectorAll('.instagram-icon') as NodeListOf<HTMLAnchorElement>;
+
+    githubLinks.forEach((githubLink : HTMLAnchorElement) => {
+        githubLink.innerHTML += '<img src="Media/Icons/inverted/github.svg" alt="Github">';
+    })
+
+    youtubeLinks.forEach((youtubeLink : HTMLAnchorElement) => {
+        youtubeLink.innerHTML += '<img src="Media/Icons/inverted/youtube.svg" alt="Github">';
+    })
+
+    instagramLinks.forEach((instagramLink : HTMLAnchorElement) => {
+        instagramLink.innerHTML += '<img src="Media/Icons/inverted/instagram.svg" alt="Github">';
+    })
+}
+
+loadLocalIcons()
 
 /*          */
 /*  MISC    */
