@@ -4,28 +4,52 @@
 
 :root
 {
-    --main-color: rgb(151 223 252);
-    --second-color: rgb(133 138 227);
-    --accent-color: rgb(97 61 193);
-    --accent2-color: rgb(78 20 140);
+    /*  colors  */
+    --main-color: #41d252;
+    --second-color: #0f172a;
+    --accent-color: #1f915e;
+    --accent2-color: #3c3c3c;
 
-    --header-background: var(--accent-color);
+    /*  empty sections  */
+    --section-background: #181818;
+
+    /*  main parts    */
+    --header-background: var(--main-color);
     --main-background: temp;
     --footer-background: var(--accent2-color);
 
-    --nav-header-button-color: var(--second-color);
+    /*  navigation header   */
+    --nav-header-button-color: var(--accent-color);
+    --nav-header-button-active-color: #1f915e;
     --nav-header-button-hover-color: rgb(71, 46, 151);
 
-    --home-section-background: black;
-    --services-section-background: var(--accent2-color);
-    --about-section-background: var(--second-color);
-    --portfolio-section-background: temp;
-    --team-section-background: temp;
-    --contact-background: temp;
+    /*  sections    */
+    --home-section-background: var(--services-section-background);
+    --services-section-background: var(--section-background);
+    --about-section-background: var(--section-background);
+    --portfolio-section-background: var(--section-background);
+    --team-section-background: var(--section-background);
+    --contact-background: var(--section-background);
 
-    --service-card-background: var(--accent-color);
+    /*  services    */
+    --service-card-background: #424242;
 
-    --initial-vh: 0;
+    /*  about   */
+    --about-card-background: var(--accent2-color);
+    --about-card-stats-line-inactive-background: linear-gradient(90deg, black 0%, var(--accent2-color) 70%);
+    --about-card-stats1-line-color: red;
+    --about-card-stats2-line-color: green;
+    --about-card-stats3-line-color: blue;
+
+    /*  services    */
+    --portfolio-card-background: none;
+    --portfolio-card-button-background: none;
+
+    /*  teams   */
+    --team-card-background: black;
+
+    /*  misc    */
+    --initial-vh: 1080;
 }
 
 *
@@ -50,11 +74,24 @@ body
     background: #3c3c3c;
 }
 
+main
+{
+    position: relative;
+}
+
 section:not(.custom-section)
 {
     width: 100%;
     padding: 4rem 2rem;
+    min-height: var(--initial-vh);
     background: black;
+}
+
+section:not(.custom-section) > h1
+{
+    text-align: center;
+    color: white;
+    margin-bottom: 5%;
 }
 
 .body-overlay
@@ -92,6 +129,21 @@ section:not(.custom-section)
 /*  OBJECTS */
 /*          */
 
+.interactive-button
+{
+    transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.interactive-button:hover
+{
+    transform: scale(1.05);
+}
+
+.interactive-button:active
+{
+    transform: scale(0.95);
+}
+
 .button-w-background
 {
     padding: 10px 20px;
@@ -111,13 +163,11 @@ section:not(.custom-section)
 .button-w-background:hover
 {
     background: #e0e0e0;
-    transform: scale(1.05);
 }
 
 .button-w-background:active
 {
     background: #c0c0c0;
-    transform: scale(0.95);
 }
 
 .button-wo-background
@@ -141,14 +191,12 @@ section:not(.custom-section)
 {
     border-color: #e0e0e0;
     color: #e0e0e0;
-    transform: scale(1.05);
 }
 
 .button-wo-background:active
 {
     border-color: #c0c0c0;
     color: #c0c0c0;
-    transform: scale(0.95);
 }
 
 /*          */
@@ -282,6 +330,17 @@ header .nav-links li:hover
     transform: skewX(-15deg) scaleX(1.1) translateX(-5%);
 }
 
+/*  TEST    */
+.nav-header-button-background.active
+{
+    background: white;
+}
+
+.nav-header-button-background
+{
+    background-color: gray;
+}
+
 #nav-menu-checkbox,
 .nav-menu-bar-wrapper
 {
@@ -316,7 +375,7 @@ header .nav-links li:hover
     align-items: center;
     gap: 20px;
 
-    background: linear-gradient(0deg, var(--services-section-background) 35%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 0) 85%);
+    background: linear-gradient(0deg, var(--home-section-background) 35%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 0) 85%);
 }
 
 #home h1,
@@ -354,7 +413,7 @@ header .nav-links li:hover
 #home #main-actions button
 {
     flex: 1;
-    padding: 10px 0;
+    padding: 15px 0;
     border-radius: 10px;
 
     cursor: pointer;
@@ -376,6 +435,15 @@ header .nav-links li:hover
     gap: 20px;
 }
 
+#services,
+#services .section-body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #services * {
     color: white;
 }
@@ -392,7 +460,7 @@ header .nav-links li:hover
 .service-card
 {
     position: relative;
-    width: 250px;
+    width: 300px;
     min-height: 400px;
     max-height: 1000px;
     padding: 10px;
@@ -467,9 +535,15 @@ header .nav-links li:hover
 /*  ABOUT   */
 /*          */
 
+#about,
 #about .section-body
 {
-    height: 100vh;
+    height: var(--initial-vh);
+}
+
+#about .section-body
+{
+    height: var(--initial-vh, 1080px);
     position: relative;
     display: flex;
     flex-direction: row;
@@ -502,7 +576,7 @@ header .nav-links li:hover
 #about .section-right
 {
     position: relative;
-    padding: 15px;
+    padding: 50px;
 
     background-color: var(--about-section-background);
 }
@@ -514,7 +588,7 @@ header .nav-links li:hover
     left: -100%;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1;
     background: linear-gradient(-90deg, var(--about-section-background)5%, rgba(0, 0, 0, 0) 50%);
 }
 
@@ -524,14 +598,388 @@ header .nav-links li:hover
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: space-around;
     gap: 25px;
+    padding: 25% 0;
 }
 
 #about .section-right *
 {
     color: white;
 }
+
+#about-cards
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#about-cards .about-card
+{
+    min-width: 140px;
+    min-height: 100px;
+    
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+
+    border-radius: 15px;
+    padding: 15px;
+
+    background: var(--about-card-background);
+    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.about-card:hover
+{
+    transform: scale(1.1) translateY(-5%);
+}
+
+#about-cards .about-card h3
+{
+    flex: 1;
+}
+
+#about-cards .about-card .about-card-stats
+{
+    width: 100%;
+}
+
+#about-cards .about-card .about-card-stats .about-card-stats-line
+{
+    position: relative;
+    height: 20px;
+    margin: 10px 0 0 0;
+    border-radius: 20px;
+    overflow: hidden;
+
+    background: var(--about-card-stats-line-inactive-background);
+}
+
+#about-cards .about-card .about-card-stats .about-card-stats-line .about-card-stats-line-inside
+{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#about-card-stats1-line-inside
+{
+    background-color: var(--about-card-stats1-line-color);
+}
+
+#about-card1:hover #about-card-stats1-line-inside
+{
+    transform: translateX(var(--x));
+}
+
+#about-card-stats2-line-inside
+{
+    background-color: var(--about-card-stats2-line-color);
+}
+
+#about-card2:hover #about-card-stats2-line-inside
+{
+    transform: translateX(var(--x));
+}
+
+#about-card3:hover #about-card-stats3-line-inside
+{
+    transform: translateX(var(--x));
+}
+
+#about-card-stats3-line-inside
+{
+    background-color: var(--about-card-stats3-line-color);
+}
+
+/*              */
+/*  PORTFOLIO   */
+/*              */
+
+#portfolio
+{
+    background: var(--portfolio-section-background);
+}
+
+#portfolio h1
+{
+    font-size: 3rem;
+}
+
+#portfolio .portfolio-cards
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#portfolio .portfolio-card
+{
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: var(--portfolio-card-background);
+
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    will-change: transform;
+}
+
+#portfolio .portfolio-card:hover
+{
+    transform: scale(1.05);
+}
+
+#portfolio .portfolio-card .portfolio-card-image
+{
+    width: 100%;
+    height: 100%;
+}
+
+#portfolio .portfolio-card .portfolio-card-image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+#portfolio .portfolio-card:hover .portfolio-card-image img
+{
+    transform: scale(1.05);
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 50% 15px 15px 15px;
+
+    background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0) 55%);
+    background-size: 100% 300%;
+    background-position: 0% 50%;
+
+    transition: background-position .4s ease;
+}
+
+#portfolio .portfolio-card:hover .portfolio-card-overlay
+{
+    background-position: 0% 70%;
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay *
+{
+    color: white;
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay h2
+{
+    font-size: 2rem;
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-content
+{
+    flex: 1;
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-actions
+{
+    align-self: center;
+    width: 50%;
+}
+
+#portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-actions button
+{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+
+    background: var(--portfolio-card-button-background);
+    border: 1px solid white;
+}
+
+/*          */
+/*  TEAMS   */
+/*          */
+
+#team #team-cards
+{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#team #team-cards .team-card
+{
+    position: relative;
+    width: 300px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: red;
+}
+
+#team #team-cards .team-card .team-card-image,
+#team #team-cards .team-card .team-card-image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#team #team-cards .team-card .team-card-overlay
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 60% 15px 10px 15px;
+
+    background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0) 60%);
+    background-size: 100% 120%;
+    background-position: 0% 100%;
+}
+
+#team #team-cards .team-card .team-card-overlay *
+{
+    color: white;
+}
+
+#team #team-cards .team-card .team-card-overlay,
+#team #team-cards .team-card .team-card-overlay *
+{
+    border: blue solid 0px;
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-socials
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-socials a
+{
+    width: 30px;
+    height: 30px;
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-socials a img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/*              */
+/*  MISC        */
+/*              */
+
+.body-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: 99999;
+    pointer-events: none;
+}
+
+.body-overlay *
+{
+    color: white;
+}
+
+.body-system-tray
+{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 400px;
+    min-height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 15px;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: black 2px dotted;
+
+    transition: bottom .5s ease;
+    pointer-events: all;
+}
+
+.body-system-tray *
+{
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#confirm-button
+{
+    padding: 20px 10px;
+    background: none;
+
+    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 1px solid white;
+}
+
+#confirm-button:hover
+{
+    transform: scale(1.05);
+}
+
+#confirm-button:active
+{
+    transform: scale(0.95);
+}
+
+.body-system-tray.hidden
+{
+    bottom: -100%;
+}
+
 
 
 
@@ -672,7 +1120,7 @@ footer .footer-right
     }
 }
 
-@media (max-width: 500px)
+@media (max-width: 650px)
 {
     /*          */
     /*  HEADER  */
@@ -688,10 +1136,21 @@ footer .footer-right
         width: 100vw;
     }
 
+    /*          */
     /*  HOME    */
+    /*          */
 
     #home #main-actions
     {
         width: 100%;
     }
+}
+
+
+@media (max-width: 500px)
+{
+    /*          */
+    /*  HEADER  */
+    /*          */
+    /*  HOME    */
 }

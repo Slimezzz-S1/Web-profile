@@ -27,12 +27,12 @@
 
                 <nav class="nav-header">
                     <ul class="nav-links">
-                        <li><a id="nav-home" class="nav-header-button">Home</a></li>
-                        <li><a id="nav-services" class="nav-header-button">Services</a></li>
-                        <li><a id="nav-about" class="nav-header-button">About</a></li>
-                        <li><a id="nav-portfolio" class="nav-header-button">Portfolio</a></li>
-                        <li><a id="nav-team" class="nav-header-button">Team</a></li>
-                        <li><a id="nav-contact" class="nav-header-button">Contact</a></li>
+                        <li class="nav-header-button-background"><a id="nav-home" class="nav-header-button">Home</a></li>
+                        <li class="nav-header-button-background"><a id="nav-services" class="nav-header-button">Services</a></li>
+                        <li class="nav-header-button-background"><a id="nav-about" class="nav-header-button">About</a></li>
+                        <li class="nav-header-button-background"><a id="nav-portfolio" class="nav-header-button">Portfolio</a></li>
+                        <li class="nav-header-button-background"><a id="nav-team" class="nav-header-button">Team</a></li>
+                        <li class="nav-header-button-background"><a id="nav-contact" class="nav-header-button">Contact</a></li>
                     </ul>
                 </nav>
 
@@ -61,23 +61,24 @@
                     </div>
 
                     <div id="main-actions">
-                        <button id="main-button1" class="button-wo-background">
+                        <button id="main-button1" class="button-wo-background home-button interactive-button">
                             Learn More
                         </button>
 
-                        <button id="main-button2" class="button-w-background">
+                        <button id="main-button2" class="button-w-background home-button interactive-button">
                             Slime more
                         </button>
                     </div>
                 </div>
             </section>
 
+            <!--    SERVICES    -->
             <section id="services">
+                <h1 id="service-title" class="section-title">
+                    Our Services
+                </h1>
+                
                 <div class="section-body">
-                    <h1 id="service-title" class="section-title">
-                        Our Services
-                    </h1>
-
                     <div id="service-content" class="section-content">
                         <div id="service-card1" class="service-card">
                             <div class="service-card-background-overlay"></div>
@@ -158,28 +159,135 @@
                             </p>
 
                             <div id="about-cards" class="cards-wrapper">
-                                <div id="about-card1" class="cards-wrapper">
-                                    <h3>SZZ</h3>
+                                <div id="about-card1" class="about-card">
+                                    <h3>
+                                        Satisfaction rate
+                                    </h3>
+                                    
                                     <div id="about-card-stats1" class="about-card-stats">
-                                        <div id="about-card-stats1-value"></div>
-                                        <div id="about-card-stats1-line"></div>
+                                        <div id="about-card-stats1-value" class="about-card-stats-value">
+                                            0%
+                                        </div>
+
+                                        <div id="about-card-stats1-line" class="about-card-stats-line">
+                                            <div id="about-card-stats1-line-inside" class="about-card-stats-line-inside"></div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div id="about-card2" class="cards-wrapper">
-                                    <h3>SZZ</h3>
+                                <div id="about-card2" class="about-card">
+                                    <h3>
+                                        SZZ
+                                    </h3>
+
                                     <div id="about-card-stats2" class="about-card-stats">
-                                        <div id="about-card-stats2-value"></div>
-                                        <div id="about-card-stats2-line"></div>
+                                        <div id="about-card-stats2-value" class="about-card-stats-value">
+                                            0%
+                                        </div>
+
+                                        <div id="about-card-stats2-line" class="about-card-stats-line">
+                                            <div id="about-card-stats2-line-inside" class="about-card-stats-line-inside"></div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div id="about-card3" class="cards-wrapper">
-                                    <h3>SZZ</h3>
+                                <div id="about-card3" class="about-card">
+                                    <h3>
+                                        SZZ
+                                    </h3>
+
                                     <div id="about-card-stats3" class="about-card-stats">
-                                        <div id="about-card-stats3-value"></div>
-                                        <div id="about-card-stats3-line"></div>
+                                        <div id="about-card-stats3-value" class="about-card-stats-value">
+                                            0%
+                                        </div>
+                                        
+                                        <div id="about-card-stats3-line" class="about-card-stats-line">
+                                            <div id="about-card-stats3-line-inside" class="about-card-stats-line-inside"></div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>live
+            </section>
+
+            <!--    PORTFOLIO   -->
+            <section id="portfolio">
+                <h1>
+                    Our Portfolio
+                </h1>
+
+                <div class="section-body">
+                    <div class="portfolio-cards">
+                        <div id="portfolio-card1" class="portfolio-card">
+                            <div class="portfolio-card-image">
+                                <img src="Media/Pictures/main.png" alt="">
+                            </div>
+
+                            <div class="portfolio-card-overlay">
+                                <h2>
+                                    Slime
+                                </h2>
+
+                                <div class="portfolio-card-content">
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maxime.
+                                    </p>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button class="interactive-button">
+                                        View Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="portfolio-card1" class="portfolio-card">
+                            <div class="portfolio-card-image">
+                                <img src="Media/Pictures/main.png" alt="">
+                            </div>
+
+                            <div class="portfolio-card-overlay">
+                                <h2>
+                                    Slime
+                                </h2>
+
+                                <div class="portfolio-card-content">
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maxime.
+                                    </p>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button class="interactive-button">
+                                        View Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="portfolio-card1" class="portfolio-card">
+                            <div class="portfolio-card-image">
+                                <img src="Media/Pictures/main.png" alt="">
+                            </div>
+
+                            <div class="portfolio-card-overlay">
+                                <h2>
+                                    Slime
+                                </h2>
+
+                                <div class="portfolio-card-content">
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maxime.
+                                    </p>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button class="interactive-button">
+                                        View Detail
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -187,16 +295,121 @@
                 </div>
             </section>
 
-            <!--    PORTFOLIO   -->
-            <section id="portfolio">
-                <div class="section-body"></div>
+            <!--    Team    -->
+            <section id="team">
+                <h1>
+                    Our Team
+                </h1>
+
+                <div class="section-body">
+                    <div id="team-cards" class="section cards-wrapper">
+                        <div id="team-card1" class="team-card">
+                            <div class="team-card-image">
+                                <img src="Media/Pictures/Teams/Ahmad Ridani.jpg" alt="">
+                            </div>
+
+                            <div class="team-card-overlay">
+                                <h2>
+                                    Ahmad Ridani
+                                </h2>
+
+                                <div class="team-card-socials">
+                                    <a href="https://github.com/Slimezzz-S1" class="team-card-social github-icon"></a>
+                                    <a href="https://www.youtube.com/@S11-ME_" class="team-card-social youtube-icon"></a>
+                                    <a href="" class="team-card-social"></a>
+                                </div>
+
+                                <div class="team-card-role">
+                                    <p>
+                                        Front-End Developer, 3D Artist
+                                    </p>
+                                </div>
+
+                                <div class="team-card-actions">
+                                    <button>
+                                        View bio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="team-card2" class="team-card">
+                            <div class="team-card-image">
+                                <img src="Media/Pictures/Teams/Arfa Zhahran Wardana.jpg" alt="">
+                            </div>
+
+                            <div class="team-card-overlay">
+                                <h2>
+                                    Arfa Zhahran Wardana
+                                </h2>
+
+                                <div class="team-card-socials">
+                                    <a href="https://www.instagram.com/fazhahran/" class="team-card-social instagram-icon"></a>
+                                </div>
+
+                                <div class="team-card-role">
+
+                                </div>
+
+                                <div class="team-card-actions">
+                                    <button>
+                                        View bio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="team-card3" class="team-card">
+                            <div class="team-card-image">
+                                <img src="Media/Pictures/Teams/Gustiana Dikha Rhmadhan.jpg" alt="">
+                            </div>
+
+                            <div class="team-card-overlay">
+                                <h2>
+                                    Gustiana Dikha
+                                </h2>
+                                
+                                <div class="team-card-socials">
+                                    <a href="https://www.instagram.com/dika.11208/" class="team-card-social instagram-icon"></a>
+                                </div>
+
+                                <div class="team-card-role">
+
+                                </div>
+
+                                <div class="team-card-actions">
+                                    <button>
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+            <!--    GLOBAL  OVERLAY -->
+            <div class="body-overlay">
+                <div id="warning-wip-tray" class="body-system-tray hidden">
+                    <h2>
+                        WARNING!
+                    </h2>
+
+                    <p>
+                        This is work in progress
+                    </p>
+
+                    <button id="confirm-button" class="overlay-button" onclick="document.getElementById('warning-wip-tray').classList.add('hidden')">
+                        Okay
+                    </button>
+                </div>
+            </div>
         </main>
 
         <footer>
             <div class="footer-right">
                 <p>
-                    &copy; 2024 SlimeZZZ. All rights reserved.
+                    &copy; 2026 SlimeZZZ. All rights reserved.
                 </p>
             </div>
 
@@ -204,6 +417,32 @@
 
             </div>
         </footer>
+
+        <script type="module">
+            import * as addLinkIcons from '/extra.js';
+
+            addLinkIcons.loadLocalIcons();
+        </script>
+
+        <script src="script.js"></script>
+
+        <script>
+
+            function systemTrayPopUpOnLoad()
+            {
+                window.onload = () => {
+                    const wipTray = document.getElementById('warning-wip-tray');
+                    const button = document.getElementById('confirm-button');
+
+                    button.addEventListener('click', () => {
+                        setTimeout(() => {
+                            wipTray.style.display = 'none'
+                        }, 1000);
+                    })
+                    
+                    wipTray.classList.remove('hidden');
+                };
+            }
+        </script>
     </body>
-    <script src="script.js"></script>
 </html>
