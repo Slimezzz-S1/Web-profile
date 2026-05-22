@@ -22,10 +22,8 @@ function navHeaderButtonBackgroundBlink() {
         (function (i) {
             setTimeout(() => {
                 navHeaderButtonBackgrounds[i].classList.add('active');
-                navHeaderButtons[i].style.color = 'black';
                 setTimeout(() => {
                     navHeaderButtonBackgrounds[i].classList.remove('active');
-                    navHeaderButtons[i].style.color = 'white';
                 }, 1000);
             }, i * 1000);
         })(i);
@@ -60,6 +58,9 @@ window.addEventListener('scroll', () => {
 const homeButtons = document.querySelectorAll('.home-button');
 homeButtons[0].addEventListener('click', () => {
     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+});
+homeButtons[1].addEventListener('click', () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 });
 const aboutCards = [
     {
@@ -104,6 +105,32 @@ aboutCards.forEach(aboutCard => {
 /*          */
 /*  TEAMS   */
 /*          */
+const teamButtons = document.querySelectorAll('.team-card-button');
+const teamHTMLFolder = 'IndividualPortfolio';
+const teamHTMLFiles = [
+    `${teamHTMLFolder}/Ahmad/index.html`,
+    `${teamHTMLFolder}/Arfa/index.html`,
+    `${teamHTMLFolder}/Dikha/index.html`
+];
+/*
+teamButtons.forEach((teamButton) =>
+{
+    teamButtonStrings.push(teamButton)
+})
+
+teamButtons.forEach((teamButton) =>
+{
+    teamButton.addEventListener('click', () =>
+    {
+        window.location.assign(teamHTMLFiles[teamButtonStrings.indexOf(teamButton.toString())])
+    })
+})*/
+for (let i = 0; i < teamButtons.length; i++) {
+    console.log(i);
+    teamButtons[i].addEventListener('click', () => {
+        document.location.assign(teamHTMLFiles[i]);
+    });
+}
 function loadLocalIcons() {
     const githubLinks = document.querySelectorAll('.github-icon');
     const youtubeLinks = document.querySelectorAll('.youtube-icon');

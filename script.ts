@@ -31,11 +31,9 @@ function navHeaderButtonBackgroundBlink() {
         {
             setTimeout(() => {
                 navHeaderButtonBackgrounds[i].classList.add('active')
-                navHeaderButtons[i].style.color = 'black'
 
                 setTimeout(() => {
                     navHeaderButtonBackgrounds[i].classList.remove('active')
-                    navHeaderButtons[i].style.color = 'white'
                 }, 1000)
             }, i * 1000)
         })(i)
@@ -89,6 +87,11 @@ const homeButtons = document.querySelectorAll('.home-button') as NodeListOf<HTML
 homeButtons[0].addEventListener('click', () =>
 {
     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+})
+
+homeButtons[1].addEventListener('click', () =>
+{
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
 })
 
 /*          */
@@ -169,11 +172,28 @@ aboutCards.forEach(aboutCard =>
 /*  TEAMS   */
 /*          */
 
+const teamButtons : NodeListOf<HTMLButtonElement> = document.querySelectorAll('.team-card-button')
+const teamHTMLFolder :string = 'IndividualPortfolio'
+const teamHTMLFiles : string[] =
+[
+    `${teamHTMLFolder}/Ahmad/index.html`,
+    `${teamHTMLFolder}/Arfa/index.html`,
+    `${teamHTMLFolder}/Dikha/index.html`
+]
+
+for (let i : number = 0; i < teamButtons.length; i++)
+{
+    teamButtons[i].addEventListener('click', () =>
+    {
+        document.location.assign(teamHTMLFiles[i])
+    })
+}
+
 function loadLocalIcons()
 {
-    const githubLinks = document.querySelectorAll('.github-icon') as NodeListOf<HTMLAnchorElement>;
-    const youtubeLinks = document.querySelectorAll('.youtube-icon') as NodeListOf<HTMLAnchorElement>;
-    const instagramLinks = document.querySelectorAll('.instagram-icon') as NodeListOf<HTMLAnchorElement>;
+    const githubLinks : NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.github-icon');
+    const youtubeLinks : NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.youtube-icon');
+    const instagramLinks : NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.instagram-icon');
 
     githubLinks.forEach((githubLink : HTMLAnchorElement) => {
         githubLink.innerHTML += '<img src="Media/Icons/inverted/github.svg" alt="Github">';
@@ -187,6 +207,8 @@ function loadLocalIcons()
         instagramLink.innerHTML += '<img src="Media/Icons/inverted/instagram.svg" alt="Github">';
     })
 }
+
+
 
 loadLocalIcons()
 

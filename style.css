@@ -33,6 +33,9 @@
 
     /*  services    */
     --service-card-background: #424242;
+    --service-card1-hover-background: rgb(224, 51, 12);
+    --service-card2-hover-background: rgb(230, 141, 25);
+    --service-card3-hover-background: rgb(31, 62, 174);
 
     /*  about   */
     --about-card-background: var(--accent2-color);
@@ -153,10 +156,10 @@ section:not(.custom-section) > h1
 .interactive-card:hover
 {
     transform: scale(1.05);
-    animation: breathingCard .7s ease infinite alternate;
+    animation: breathingCard .8s ease-in-out infinite alternate;
 }
 
-.interactive-card:active
+.interactive-card:active:not(.team-card)
 {
     transform: scale(0.95);
 }
@@ -338,7 +341,7 @@ header .nav-links li > *
     color: white;
 
     transform: skewX(15deg);
-    
+    transition: box-shadow .4s ease;
 }
 
 header .nav-links li:hover
@@ -351,6 +354,12 @@ header .nav-links li:hover
 .nav-header-button-background.active
 {
     background: white;
+    box-shadow: 0 0 10px white;
+}
+
+.nav-header-button-background.active a
+{
+    color: black;
 }
 
 .nav-header-button-background
@@ -485,19 +494,41 @@ header .nav-links li:hover
     width: 300px;
     min-height: 400px;
     max-height: 1000px;
-    padding: 10px;
+    padding: 50px;
 
     background: var(--service-card-background);
     border-radius: 10px;
     overflow: hidden;
     z-index: 0;
 
-    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    transition:
+        transform .4s cubic-bezier(0.075, 0.82, 0.165, 1),
+        background .3s ease;
 }
 
 .service-card:hover
 {
     transform: scale(1.05);
+}
+
+#service-card1:hover
+{
+    background: var(--service-card1-hover-background);
+}
+
+#service-card2:hover
+{
+    background: var(--service-card2-hover-background);
+}
+
+#service-card3:hover
+{
+    background: var(--service-card3-hover-background);
 }
 
 .service-card .service-card-background-overlay
@@ -871,6 +902,11 @@ header .nav-links li:hover
     object-fit: cover;
 }
 
+#team #team-cards .team-card:hover .team-card-image img
+{
+    animation: breathingCardBackground .8s ease-in-out infinite alternate;
+}
+
 #team #team-cards .team-card .team-card-overlay
 {
     position: absolute;
@@ -946,6 +982,65 @@ header .nav-links li:hover
     border-radius: 10px;
 }
 
+/*              */
+/*  CONTACT     */
+/*              */
+
+#contact
+{
+    justify-content: space-around;
+}
+
+#contact .section-body
+{
+    flex: 1;
+
+}
+
+#contact-content
+{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+}
+
+#contact .section-body #contact-details,
+#contact .section-body #contact-form
+{
+    flex: 1;
+}
+
+#contact .section-body #contact-details
+{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#contact .section-body #contact-details .contact-details-point
+{
+    height: 60px;
+    background: yellow;
+}
+
+#contact .section-body #contact-details .contact-details-point .contact-details-logo
+{
+    width: 15px;
+    height: 15px;
+}
+
+#contact .section-body #contact-details .contact-details-point .contact-details-logo img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#contact .section-body #contact-form
+{
+    background-color: blue;
+}
 
 
 /*              */
@@ -1207,6 +1302,17 @@ footer .footer-right
     }
 }
 
+@media (max-width: 400px)
+{
+    /*          */
+    /*  TEAMS   */
+    /*          */
+
+    #team #team-cards .team-card .team-card-overlay
+    {
+        padding-top: 70%;
+    }
+}
 
 /*  KEYFRAMES   */
 
@@ -1232,5 +1338,17 @@ footer .footer-right
     to
     {
         box-shadow: 0 0 20px white;
+    }
+}
+
+@keyframes breathingCardBackground
+{
+    from
+    {
+        transform: scale(1);
+    }
+    to
+    {
+        transform: scale(1.05);
     }
 }
