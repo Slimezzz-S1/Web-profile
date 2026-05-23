@@ -386,17 +386,79 @@
                     Contact Us
                 </h1>
 
-                <div class="section-body">
-                    <div id="contact-content" class="section-content">
-                        <div class="section-left" id="contact-details">
-                            <div class="contact-details-point">
+                <div id="contact-content" class="section-body">
+                    <div class="contact-details-points">
+                        <ul>
+                            <li id="contact-details-point1" class="contact-details-point">
+                                <div class="contact-details-point-logo">
+                                    <img src="Media/Icons/inverted/location.svg" alt="-">
+                                </div>
 
-                            </div>            
+                                <div class="contact-details-point-info">
+                                    Sumedang
+                                </div>
+                            </li>
 
-                            <div class="section-right" id="contact-form">
+                            <li id="contact-details-point2" class="contact-details-point">
+                                <div class="contact-details-point-logo">
+                                    <img src="Media/Icons/inverted/email.svg" alt="-">
+                                </div>
+
+                                <div class="contact-details-point-info">
+                                    Company@gmail.com
+                                </div>
+                            </li>
+
+                            <li id="contact-details-point3" class="contact-details-point">
+                                <div class="contact-details-point-logo">
+                                    <img src="Media/Icons/inverted/whatsapp.svg" alt="-">
+                                </div>
+
+                                <div class="contact-details-point-info">
+                                    62+ 858-6358-7817
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <form action="contact" method="post" id="contact-form">
+                            <div class="contact-input-wrapper">
+                                <div id="contact-input-label-name" class="contact-input-label">
+                                    Name
+                                </div>
+
+                                <input type="text" name="name" id="contact-input-name" class="contact-input" required>
                             </div>
-                        </div>
-                    </div> 
+                            <div class="contact-input-wrapper">
+                                <div id="contact-input-label-email" class="contact-input-label">
+                                    Email
+                                </div>
+
+                                <input type="email" name="email" id="contact-input-email" class="contact-input" required>
+                            </div>
+
+                            <div class="contact-input-wrapper">
+                                <div id="contact-input-label-subject" class="contact-input-label">
+                                    Subject
+                                </div>
+
+                                <input type="text" name="subject" id="contact-input-subject" class="contact-input" required>
+                            </div>
+
+                            <div class="contact-input-wrapper">
+                                <div id="contact-input-label-message" class="contact-input-label">
+                                    Message
+                                </div>
+
+                                <textarea name="message" id="contact-input-message" class="contact-input" cols="2"></textarea>
+                            </div>
+                            
+                            <button type="submit" id="contact-input-submit" class="contact-input-button interactive-button">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </section>
 

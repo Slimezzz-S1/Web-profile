@@ -208,6 +208,38 @@ function loadLocalIcons()
     })
 }
 
+/*          */
+/*  CONTACT */
+/*          */
+const contactInputs : NodeListOf<HTMLInputElement> = document.querySelectorAll('.contact-input')
+
+contactInputs.forEach((contactInput : HTMLInputElement) =>
+{
+    contactInput.addEventListener('input', () =>
+    {
+        if (contactInput.value)
+        {
+            console.log('slime')
+            document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden')
+        }
+        else
+        {
+            console.log('not slime')
+            document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden')
+        }
+    })
+
+    if (contactInput.value)
+    {
+        console.log('slime')
+        document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden')
+    }
+    else
+    {
+        console.log('not slime')
+        document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden')
+    }
+})
 
 
 loadLocalIcons()

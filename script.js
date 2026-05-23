@@ -112,21 +112,7 @@ const teamHTMLFiles = [
     `${teamHTMLFolder}/Arfa/index.html`,
     `${teamHTMLFolder}/Dikha/index.html`
 ];
-/*
-teamButtons.forEach((teamButton) =>
-{
-    teamButtonStrings.push(teamButton)
-})
-
-teamButtons.forEach((teamButton) =>
-{
-    teamButton.addEventListener('click', () =>
-    {
-        window.location.assign(teamHTMLFiles[teamButtonStrings.indexOf(teamButton.toString())])
-    })
-})*/
 for (let i = 0; i < teamButtons.length; i++) {
-    console.log(i);
     teamButtons[i].addEventListener('click', () => {
         document.location.assign(teamHTMLFiles[i]);
     });
@@ -145,6 +131,30 @@ function loadLocalIcons() {
         instagramLink.innerHTML += '<img src="Media/Icons/inverted/instagram.svg" alt="Github">';
     });
 }
+/*          */
+/*  CONTACT */
+/*          */
+const contactInputs = document.querySelectorAll('.contact-input');
+contactInputs.forEach((contactInput) => {
+    contactInput.addEventListener('input', () => {
+        if (contactInput.value) {
+            console.log('slime');
+            document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden');
+        }
+        else {
+            console.log('not slime');
+            document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden');
+        }
+    });
+    if (contactInput.value) {
+        console.log('slime');
+        document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden');
+    }
+    else {
+        console.log('not slime');
+        document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden');
+    }
+});
 loadLocalIcons();
 /*          */
 /*  MISC    */
