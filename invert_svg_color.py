@@ -1,13 +1,12 @@
 from pathlib import Path
 import os
-import subprocess
 
 # THIS IS FOR LINUX
 
 PATH : Path = Path('Media/Icons')
-NEWFOLDER : string | Path = Path('inverted')
+NEWFOLDER : str | Path = Path('inverted')
 
-icons :list[string | Path] = [f for f in os.listdir(PATH) if os.path.isfile(os.path.join(PATH, f))]
+icons :list[str | Path] = [f for f in os.listdir(PATH) if os.path.isfile(os.path.join(PATH, f))]
 
 if not os.path.exists(str(PATH / NEWFOLDER)):
     os.makedirs(str(PATH / NEWFOLDER))

@@ -4,21 +4,419 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            Document
+            Portfolio - Ahmad Ridani
         </title>
 
         <style>
+/*  ROOT    */
 
+*
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+:root
+{
+    /*  ROOT    */
+
+    --color1: #22ddae;
+    --color2: #249e43;
+    --color3: #b317b3;
+    --color4: #ca1b1b;
+
+    --header-background: var(--color2);
+    --nav-header-background: none;
+    --section-background: #1c1c1c;
+    --main-background: temp;
+    --footer-background: temp;
+
+    /*  HEADER  */
+
+    --header-padding-x: 5%;
+
+    --header-nav-header-button-background: var(--color1);
+    --header-nav-header-button-hover-background: #48a9e0;
+    --header-nav-header-button-active-background: #3c57a1;
+
+    /*  SECTIONS    */
+
+    --home-section-background: var(--section-background);
+    --about-section-background: var(--section-background);
+    --skills-section-background: var(--section-background);
+    --portfolio-section-background: var(--section-background);
+    --contact-section-background: var(--section-background);
+
+    /*  HOME    */
+
+    --home-card1-background: none;
+    --home-card2-background: #008feb;
+
+    --home-button-background: var(--color1);
+
+    --home-button1-background: var(--home-button-background);
+    --home-button2-background: var(--home-button-background);
+
+
+    /*  ABOUT   */
+
+    --about-card-background: #3c3c3c;
+
+    /*  SKILLS  */
+
+    --skill-card-background: #3c3c3c;
+
+    /*  PORTFOLIO   */
+    /*  CONTACT */
+}
+
+html
+{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+body
+{
+    width: 100%;
+    min-height: 100%;
+}
+
+section
+{
+    padding: 15px;
+    background: var(--section-background);
+}
+
+section *
+{
+    color: white;
+}
+
+/*  OBJECTS */
+
+.horizontal-panels
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vertical-panels
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.interactive-button
+{
+    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.interactive-button:hover
+{
+    transform: scale(1.05);
+}
+
+.interactive-button:active
+{
+    transform: scale(0.95);
+}
+
+.title-and-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.title-and-content .title
+{
+    text-align: center;
+}
+
+.title-and-content .content
+{
+    flex: 1;
+}
+
+.many-cards
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/*  HEADER  */
+
+header
+{
+    min-height: 80px;
+    padding: 0 0 0 var(--header-padding-x);
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--header-background);
+}
+
+header > .left
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 40px;
+}
+
+header > .center
+{
+    flex: 1;
+}
+
+header > .right #nav-header-links,
+header > .right #nav-header-links ul
+{
+    height: 100%;
+}
+
+header > .right #nav-header-links ul
+{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header > .right #nav-header-links ul li
+{
+    width: 90px;
+
+    background: var(--header-nav-header-button-background);
+
+    transition:
+        background .4s ease,
+        transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+header > .right #nav-header-links ul li:hover:not(#nav-header-link-wrapper-empty)
+{
+    background: var(--header-nav-header-button-hover-background);
+    transform: scale(1.05) translateY(2.5%);
+}
+
+header > .right #nav-header-links ul li:active:not(#nav-header-link-wrapper-empty)
+{
+    background: var(--header-nav-header-button-active-background);
+    transform: scale(0.95) translateY(-2.5%);
+}
+
+#nav-header-link-contact-wrapper
+{
+    width: var(--header-padding-x);
+}
+
+#nav-header-link-home-wrapper
+{
+    border-radius: 15px 0 0 15px;
+}
+
+header > .right #nav-header-links ul li a
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: black;
+}
+
+/*  HOME    */
+
+#home
+{
+    background: var(--home-section-background);
+}
+
+#home .horizontal-panels
+{
+    padding: 5% 10%;
+    height: 800px;
+
+    gap: 15px;
+}
+
+#home .horizontal-panels .left
+{
+    max-width: 700px;
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    background: var(--home-card1-background);
+}
+
+#home .horizontal-panels .left *
+{
+    color: white;
+}
+
+#home-title-large
+{
+    font-size: 80px;
+}
+
+#home-actions
+{
+    display: flex;
+    gap: 30px;
+}
+
+#home-actions .home-button
+{
+    width: 150px;
+    padding: 15px 10px;
+
+    background: var(--home-button-background);
+    border: none;
+    border-radius: 10px;
+}
+
+#home-actions #home-button1
+{
+    color: black;
+}
+
+#home-actions #home-button2
+{
+    background: none;
+    border: solid 1px var(--home-button2-background);
+    color: var(--home-button2-background);
+}
+
+#home-links
+{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+#home-links a
+{
+    width: 40px;
+    height: 40px;
+}
+
+#home-links a img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#home .horizontal-panels .right
+{
+    background-color: var(--home-card2-background);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#home .horizontal-panels .right img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*  ABOUT   */
+
+#about
+{
+    background: var(--about-section-background);
+}
+
+#about .vertical-panels
+{
+    align-items: center;
+}
+
+#about .two-horizontal-panels
+{
+    justify-content: center;
+}
+
+#about .vertical-panels,
+#about .horizontal-panels
+{
+    gap: 30px;
+}
+
+#about .about-card
+{
+    max-width: 600px;
+    height: 400px;
+    padding: 40px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    background: var(--about-card-background);
+}
+
+#about .about-card h3
+{
+    font-size: 30px;
+}
+
+/*  SKILLS  */
+
+#skill
+{
+    background: var(--skills-section-background);
+}
+
+#skill-language
+{
+    justify-content: center;
+}
+
+#skill-language .skill-language-card
+{
+    width: 120px;
+    height: 160px;
+    padding: 20px;
+
+    background: var(--skill-card-background);
+
+    border-radius: 20px;
+}
+
+#skill-language .skill-language-card p
+{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+/*  PORTFOLIO   */
+/*  CONTACT */
         </style>
-
-        <script>
-
-        </script>
     </head>
     <body>
         <header>
             <div class="left">
-                
+                Ahmad Ridani
             </div>
 
             <div class="center">
@@ -26,16 +424,218 @@
             </div>
 
             <div class="right">
+                <nav id="nav-header-links">
+                    <ul>
+                        <li id="nav-header-link-home-wrapper" class="nav-header-link-wrapper">
+                            <a id="nav-header-link-home" class="nav-header-link">
+                                Home
+                            </a>
+                        </li>
 
+                        <li id="nav-header-link-about-wrapper" class="nav-header-link-wrapper">
+                            <a id="nav-header-link-about" class="nav-header-link">
+                                About
+                            </a>
+                        </li>
+
+                        <li id="nav-header-link-skills-wrapper" class="nav-header-link-wrapper">
+                            <a id="nav-header-link-skills" class="nav-header-link">
+                                Skills
+                            </a>
+                        </li>
+
+                        <li id="nav-header-link-portfolio-wrapper" class="nav-header-link-wrapper">
+                            <a id="nav-header-link-portfolio" class="nav-header-link">
+                                Portfolio
+                            </a>
+                        </li>
+
+                        <li id="nav-header-link-contact-wrapper" class="nav-header-link-wrapper">
+                            <a id="nav-header-link-contact" class="nav-header-link">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li id="nav-header-link-wrapper-empty" class="nav-header-link-wrapper"></li>
+                    </ul>
+                </nav>
             </div>
         </header>
 
         <main>
+            <!--    HOME    -->
+            <section id="home">
+                <div class="horizontal-panels">
+                    <div id="home-content" class="left">
+                        <h3 id="home-title-small">
+                            Hi, I'm
+                        </h3>
 
+                        <h1 id="home-title-large">
+                            Front-End Developer & 3D Artist
+                        </h1>
+
+                        <div id="home-main">
+                            Creating simple front-end web design, 3D animation video content, Youtube video content, small simple python script
+                        </div>
+
+                        <div id="home-actions">
+                            <button id="home-button1" class="home-button interactive-button">
+                                Hire me
+                            </button>
+
+                            <button id="home-button2" class="home-button interactive-button">
+                                Download CV
+                            </button>
+                        </div>
+
+                        <div id="home-links">
+                            <a href="https://github.com/Slimezzz-S1" class="home-link github-icon">
+                                <img src="Media/Icons/inverted/github.svg" alt="">
+                            </a>
+
+                            <a href="https://www.youtube.com/@S11-ME_" class="home-link youtube-icon">
+                                <img src="Media/Icons/inverted/youtube.svg" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="home-image" class="right">
+                        <img src="Media/Pictures/Teams/Ahmad Ridani.jpg" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!--    ABOUT    -->
+            <section id="about" class="title-and-content">
+                <h1 class="title">
+                    About Me
+                </h1>
+
+                <div class="vertical-panels content">
+                    <div class="horizontal-panels">
+                        <div id="about-card1" class="left about-card card">
+                            <h3>
+                                Front-End Developer
+                            </h3>
+
+                            <p>
+                                I am a developer that works for front-end web development such as web article and web app with the use of HTML5, CSS3, and TypeScript.
+                            </p>
+                        </div>
+
+                        <div id="about-card2" class="right about-card card">
+                            <h3>
+                                3D Artist
+                            </h3>
+
+                            <p>
+                                Besides being a front-end developer, I also do 3D, that being 3D animation, 3D rigging, 3D modelling, and CGI. My current Youtube channel showcases my work of 3D animation, with the caveat of them being short videos lasting only 10-60 seconds
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="about-card3" class="about-card card">
+                        <h3>
+                            Experience
+                        </h3>
+
+                        <p>
+                            I have created so many short scripts for convenienct uses such as automatic sync data, caesar cipher, and so on. In the 3D side, I made short form videos showcasing my OC doing various animations. I also have quite a bit of experience in using linux, as my current distro being CachyOS for performance
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!--    SKILLS    -->
+            <section id="skills" class="title-and-content">
+                <h1 class="title">
+                    My Skills
+                </h1>
+
+                <div class="vertical-panels content">
+                    <div class="skill-part title-and-content">
+                        <h2 class="title">
+                            Programming language
+                        </h2>
+
+                        <div id="skill-language" class="content many-cards">
+                            <div id="skill-language-card1" class="skill-language-card">
+                                <img src="Media/Icons/inverted/html.svg" alt="">
+
+                                <p>
+                                    HTML
+                                </p>
+                            </div>
+
+                            <div id="skill-language-card2" class="skill-language-card">
+                                <img src="Media/Icons/inverted/css.svg" alt="">
+
+                                <p>
+                                    CSS
+                                </p>
+                            </div>
+
+                            <div id="skill-language-card3" class="skill-language-card">
+                                <img src="Media/Icons/inverted/js.svg" alt="">
+
+                                <p>
+                                    JS
+                                </p>
+                            </div>
+
+                            <div id="skill-language-card4" class="skill-language-card">
+                                <img src="Media/Icons/inverted/ts.svg" alt="">
+
+                                <p>
+                                    TS
+                                </p>
+                            </div>
+
+                            <div id="skill-language-card5" class="skill-language-card">
+                                <img src="Media/Icons/inverted/python.svg" alt="">
+
+                                <p>
+                                    Python
+                                </p>
+                            </div>
+
+                            <div id="skill-language-card6" class="skill-language-card">
+                                <img src="Media/Icons/inverted/cpp.svg" alt="">
+
+                                <p>
+                                    C++
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="skill-3d" class="skill-part title-and-content">
+                        <h2 class="title">
+
+                        </h2>
+
+                        <div class="content">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--    PORTFOLIO    -->
+            <section id="portfolio">
+
+            </section>
+
+            <!--    CONTACT    -->
+            <section id="contact">
+
+            </section>
         </main>
 
         <footer>
 
         </footer>
+        <script src="script.js"></script>
     </body>
 </html>
