@@ -3,3 +3,4 @@ node_modules_*/
 *.env
 *.docx
 *.docx#
+__init__.py

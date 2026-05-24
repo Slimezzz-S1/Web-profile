@@ -32,6 +32,7 @@
     --section-background: #1c1c1c;
     --main-background: temp;
     --footer-background: temp;
+    --card-background: #3c3c3c;
 
     /*  HEADER  */
 
@@ -62,13 +63,17 @@
 
     /*  ABOUT   */
 
-    --about-card-background: #3c3c3c;
+    --about-card-background: var(--card-background);
 
     /*  SKILLS  */
 
-    --skill-card-background: #3c3c3c;
+    --skill-card-background: var(--card-background);
 
     /*  PORTFOLIO   */
+
+    --portfolio-card-background: var(--card-background);
+    --portfolio-card-button-background: var(--color2);
+
     /*  CONTACT */
 }
 
@@ -87,8 +92,13 @@ body
 
 section
 {
-    padding: 15px;
+    padding: 50px 20px;
     background: var(--section-background);
+}
+
+section > h1
+{
+    font-size: 40px;
 }
 
 section *
@@ -113,6 +123,7 @@ section *
 
 .interactive-button
 {
+    cursor: pointer;
     transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -196,6 +207,7 @@ header > .right #nav-header-links ul li
     width: 90px;
 
     background: var(--header-nav-header-button-background);
+    cursor: pointer;
 
     transition:
         background .4s ease,
@@ -325,6 +337,8 @@ header > .right #nav-header-links ul li a
 
 #home .horizontal-panels .right
 {
+    position: relative;
+
     background-color: var(--home-card2-background);
     border-radius: 20px;
     overflow: hidden;
@@ -335,6 +349,37 @@ header > .right #nav-header-links ul li a
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#home .horizontal-panels .right #home-image-overlay
+{
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    
+    background: linear-gradient(0deg, black, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 60%);
+    transition: bottom .5s ease-in-out;
+}
+
+#home .horizontal-panels .right:hover img
+{
+    transform: scale(1.05);
+}
+
+#home .horizontal-panels .right:hover #home-image-overlay
+{
+    bottom: 0;
 }
 
 /*  ABOUT   */
@@ -349,7 +394,7 @@ header > .right #nav-header-links ul li a
     align-items: center;
 }
 
-#about .two-horizontal-panels
+#about .horizontal-panels
 {
     justify-content: center;
 }
@@ -362,7 +407,8 @@ header > .right #nav-header-links ul li a
 
 #about .about-card
 {
-    max-width: 600px;
+    min-width: 200px;
+    max-width: 500px;
     height: 400px;
     padding: 40px;
     border-radius: 20px;
@@ -381,35 +427,118 @@ header > .right #nav-header-links ul li a
 
 /*  SKILLS  */
 
-#skill
+#skills
 {
     background: var(--skills-section-background);
+    gap: 60px;
 }
 
-#skill-language
+#skills .vertical-panels
+{
+    gap: 60px;
+}
+
+#skill-languages
 {
     justify-content: center;
 }
 
-#skill-language .skill-language-card
+#skill-languages .skill-language-card,
+#skill-apps .skill-app-card
 {
-    width: 120px;
-    height: 160px;
-    padding: 20px;
+    width: 130px;
+    height: 180px;
+    padding: 20px 20px 25px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     background: var(--skill-card-background);
 
     border-radius: 20px;
 }
 
-#skill-language .skill-language-card p
+#skill-languages .skill-language-card p,
+#skill-apps .skill-app-card p
 {
     margin-top: 15px;
     width: 100%;
     text-align: center;
 }
 
+#skill-apps
+{
+    justify-content: center;
+}
+
 /*  PORTFOLIO   */
+
+#portfolio
+{
+    background: var(--portfolio-section-background);
+}
+
+#portfolio .content
+{
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#portfolio .portfolio-card
+{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--portfolio-card-background);
+
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+#portfolio .portfolio-card .top
+{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+#portfolio .portfolio-card .top img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#portfolio #portfolio-card1 .top img
+{
+    transform: scale(2) rotateZ(15deg) translateX(-90px) translateY(30px);
+}
+
+#portfolio #portfolio-card2 .top img
+{
+    transform: scale(2) rotateZ(15deg) translateX(15%);
+}
+
+#portfolio .portfolio-card .bottom
+{
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#portfolio .portfolio-card .bottom .portfolio-card-actions button
+{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background: var(--portfolio-card-button-background);
+}
+
 /*  CONTACT */
         </style>
     </head>
@@ -501,7 +630,21 @@ header > .right #nav-header-links ul li a
                     </div>
 
                     <div id="home-image" class="right">
-                        <img src="Media/Pictures/Teams/Ahmad Ridani.jpg" alt="">
+                         <div id="home-image-overlay">
+                            <h1>
+                                Ahmad Ridani
+                            </h1>
+
+                            <h2>
+                                X-RPL 1
+                            </h2>
+
+                            <p>
+                                SMKN 1 Sumedang
+                            </p>
+                         </div>
+                         
+                        <img src="Media/Pictures/Ahmad Ridani.jpg" alt="">
                     </div>
                 </div>
             </section>
@@ -533,6 +676,16 @@ header > .right #nav-header-links ul li a
                                 Besides being a front-end developer, I also do 3D, that being 3D animation, 3D rigging, 3D modelling, and CGI. My current Youtube channel showcases my work of 3D animation, with the caveat of them being short videos lasting only 10-60 seconds
                             </p>
                         </div>
+
+                        <div id="about-card3" class="right about-card card">
+                            <h3>
+                                Editor
+                            </h3>
+
+                            <p>
+                                I can also edit, I used to do it alot when I was in 6-8th grade, making simple edits using alight motion. Nowadays, I can only do light editing in Davinci
+                            </p>
+                        </div>
                     </div>
 
                     <div id="about-card3" class="about-card card">
@@ -559,7 +712,7 @@ header > .right #nav-header-links ul li a
                             Programming language
                         </h2>
 
-                        <div id="skill-language" class="content many-cards">
+                        <div id="skill-languages" class="content many-cards">
                             <div id="skill-language-card1" class="skill-language-card">
                                 <img src="Media/Icons/inverted/html.svg" alt="">
 
@@ -610,21 +763,107 @@ header > .right #nav-header-links ul li a
                         </div>
                     </div>
 
-                    <div id="skill-3d" class="skill-part title-and-content">
+                    <div class="skill-part title-and-content">
                         <h2 class="title">
-
+                            Applications
                         </h2>
 
-                        <div class="content">
+                        <div id="skill-apps" class="content many-cards">
+                            <div id="skill-app-card1" class="skill-app-card">
+                                <img src="Media/Icons/inverted/blender.svg" alt="">
 
+                                <p>
+                                    Blender
+                                </p>
+                            </div>
+
+                            <div id="skill-app-card2" class="skill-app-card">
+                                <img src="Media/Icons/inverted/photoshop.svg" alt="">
+
+                                <p>
+                                    Photoshop
+                                </p>
+                            </div>
+
+                            <div id="skill-app-card3" class="skill-app-card">
+                                <img src="Media/Icons/inverted/vscode.svg" alt="">
+
+                                <p>
+                                    VS Code
+                                </p>
+                            </div>
+
+                            <div id="skill-app-card4" class="skill-app-card">
+                                <img src="Media/Icons/inverted/davinci.svg" alt="">
+
+                                <p>
+                                    Davinci Resolve
+                                </p>
+                            </div>
+
+                            <div id="skill-app-card5" class="skill-app-card">
+                                <img src="Media/Icons/inverted/affinity.svg" alt="">
+
+                                <p>
+                                    Affinity
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!--    PORTFOLIO    -->
-            <section id="portfolio">
+            <section id="portfolio" class="title-and-content">
+                <h1 class="title">
+                    My Portfolio
+                </h1>
 
+                <div class="content many-cards">
+                    <div id="portfolio-card1" class="portfolio-card">
+                        <div class="top">
+                            <img src="Media/Pictures/blender.png" alt="">
+                        </div>
+
+                        <div class="bottom">
+                            <h2>
+                                3D Animations
+                            </h2>
+
+                            <p>
+                                A collection of my 3D animations
+                            </p>
+
+                            <div class="portfolio-card-actions">
+                                <button class="interactive-button">
+                                    View detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="portfolio-card2" class="portfolio-card">
+                        <div class="top">
+                            <img src="Media/Pictures/code.png" alt="">
+                        </div>
+
+                        <div class="bottom">
+                            <h2>
+                                Scripts
+                            </h2>
+
+                            <p>
+                                A collection of small scripts
+                            </p>
+
+                            <div class="portfolio-card-actions">
+                                <button class="interactive-button">
+                                    View detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!--    CONTACT    -->
