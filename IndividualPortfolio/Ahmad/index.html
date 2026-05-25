@@ -31,7 +31,7 @@
     --nav-header-background: none;
     --section-background: #1c1c1c;
     --main-background: temp;
-    --footer-background: temp;
+    --footer-background: var(--color2);
     --card-background: #3c3c3c;
 
     /*  HEADER  */
@@ -74,7 +74,14 @@
     --portfolio-card-background: var(--card-background);
     --portfolio-card-button-background: var(--color2);
 
+    --portfolio-video-card-background: var(--color2);
+    --portfolio-video-card-button-background: var(--color4);
+
     /*  CONTACT */
+
+    --contact-card-background: var(--card-background);
+    --contact-form-input-background: #1c1c1c;
+    --contact-form-input-button: var(--color2);
 }
 
 html
@@ -88,6 +95,12 @@ body
 {
     width: 100%;
     min-height: 100%;
+}
+
+main
+{
+    position: relative;
+    background: var(--main-background);
 }
 
 section
@@ -163,6 +176,65 @@ section *
     gap: 20px;
 }
 
+
+.main-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+
+    z-index: 9999;
+    padding: 3vh 3vw;
+
+    transition: opacity .5s ease;
+    opacity: 1;
+    animation: fadeIn .3s ease forwards;
+}
+
+.main-overlay-content-section
+{
+    flex: 1;
+    background-color: #1c1c1c;
+    border-radius: 40px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    overflow: scroll;
+}
+
+.main-overlay-navbar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+}
+
+.main-overlay-content
+{
+    flex: 1;
+}
+
+.main-overlay-exit-button
+{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+}
+
 /*  HEADER  */
 
 header
@@ -180,6 +252,8 @@ header > .left
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: white;
     
     font-size: 40px;
 }
@@ -189,20 +263,20 @@ header > .center
     flex: 1;
 }
 
-header > .right #nav-header-links,
-header > .right #nav-header-links ul
+header .right #nav-header-links,
+header .right #nav-header-links ul
 {
     height: 100%;
 }
 
-header > .right #nav-header-links ul
+header .right #nav-header-links ul
 {
     list-style: none;
     display: flex;
     justify-content: space-around;
 }
 
-header > .right #nav-header-links ul li
+header .right #nav-header-links ul li
 {
     width: 90px;
 
@@ -214,13 +288,13 @@ header > .right #nav-header-links ul li
         transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-header > .right #nav-header-links ul li:hover:not(#nav-header-link-wrapper-empty)
+header .right #nav-header-links ul li:hover:not(#nav-header-link-wrapper-empty)
 {
     background: var(--header-nav-header-button-hover-background);
     transform: scale(1.05) translateY(2.5%);
 }
 
-header > .right #nav-header-links ul li:active:not(#nav-header-link-wrapper-empty)
+header .right #nav-header-links ul li:active:not(#nav-header-link-wrapper-empty)
 {
     background: var(--header-nav-header-button-active-background);
     transform: scale(0.95) translateY(-2.5%);
@@ -246,7 +320,7 @@ header > .right #nav-header-links ul li a
     align-items: center;
 
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 /*  HOME    */
@@ -258,8 +332,8 @@ header > .right #nav-header-links ul li a
 
 #home .horizontal-panels
 {
-    padding: 5% 10%;
-    height: 800px;
+    padding: 5% 5%;
+    min-height: 800px;
 
     gap: 15px;
 }
@@ -539,7 +613,211 @@ header > .right #nav-header-links ul li a
     background: var(--portfolio-card-button-background);
 }
 
+/*  OVERLAY */
+
+#portfolio-video-card-wrapper
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.portfolio-video-card
+{
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 0 20px 0 ;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: var(--portfolio-video-card-background);
+}
+
+.portfolio-video-card-video
+{
+    width: 100%;
+    height: 225px;
+    background: linear-gradient(0deg, black, rgba(0, 0, 0, 0) 60%);
+}
+
+.portfolio-video-card video
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.portfolio-video-card .bottom
+{
+    width: 100%;
+    height: 50px;
+    padding: 10px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+}
+
+.portfolio-video-card .bottom *
+{
+    flex: 1;
+}
+
+.portfolio-video-card .bottom button
+{
+    padding: 15px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    
+    background: var(--portfolio-video-card-button-background);
+}
+
+.portfolio-video-card h5
+{
+    font-size: 18px;
+    color: white;
+}
+
 /*  CONTACT */
+
+#contact
+{
+    background: var(--contact-section-background);
+}
+
+#contact .content
+{
+    display: flex;
+    justify-content: center;
+}
+
+#contact-form
+{
+    padding: 35px 25px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    background: var(--contact-card-background);
+}
+
+#contact-form .contact-input-wrapper *
+{
+    width: 400px;   
+    height: 40px;
+    background: none;
+    color: white;
+}
+
+#contact-form .contact-input-wrapper *:is(input),
+#contact-form .contact-input-wrapper *:is(textarea)
+{
+    width: 400px;   
+    height: 40px;
+    padding: 10px 15px;
+
+    border: none;
+    border-radius: 10px;
+    background: var(--contact-form-input-background);
+}
+
+#contact-form .contact-input-button
+{
+    background: var(--color2);
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+/*  FOOTER  */
+
+footer
+{
+    padding: 20px 30px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--footer-background);
+}
+
+footer > *
+{
+    flex: 1;
+}
+
+footer *
+{
+    color: white;
+}
+
+/*  MEDIA   */
+
+@media (max-width: 850px) {
+    /*  HOME    */
+
+    #home .horizontal-panels
+    {
+        flex-direction: column-reverse;
+    }
+
+    #home .horizontal-panels .right
+    {
+        height: 800px;
+    }
+
+    /*  ABOUT   */
+
+    #about .vertical-panels .horizontal-panels
+    {
+        flex-wrap: wrap;
+    }
+
+    /*  PORTFOLIO   */
+
+    #portfolio-video-card-wrapper
+    {
+        justify-content: center;
+    }
+}
+
+/*  KEYFRAMES   */
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeOut
+{
+    from
+    {
+        opacity: 100%;
+    }
+    to
+    {
+        opacity: 0;
+    }
+}
         </style>
     </head>
     <body>
@@ -835,7 +1113,7 @@ header > .right #nav-header-links ul li a
                             </p>
 
                             <div class="portfolio-card-actions">
-                                <button class="interactive-button">
+                                <button class="interactive-button" onclick="openOverlay('portfolio-video');">
                                     View detail
                                 </button>
                             </div>
@@ -867,13 +1145,66 @@ header > .right #nav-header-links ul li a
             </section>
 
             <!--    CONTACT    -->
-            <section id="contact">
+            <section id="contact" class="title-and-content">
+                <h1 class="title">
+                    Contact Me
+                </h1>
+                
+                <div class="content">
+                    <form action="contact" method="post" id="contact-form">
+                        <div class="contact-input-wrapper">
+                            <div id="contact-input-label-name" class="contact-input-label">
+                                Name
+                            </div>
 
+                            <input type="text" name="name" id="contact-input-name" class="contact-input" required>
+                        </div>
+                        <div class="contact-input-wrapper">
+                            <div id="contact-input-label-email" class="contact-input-label">
+                                Email
+                            </div>
+
+                            <input type="email" name="email" id="contact-input-email" class="contact-input" required>
+                        </div>
+
+                        <div class="contact-input-wrapper">
+                            <div id="contact-input-label-subject" class="contact-input-label">
+                                Subject
+                            </div>
+
+                            <input type="text" name="subject" id="contact-input-subject" class="contact-input" required>
+                        </div>
+
+                        <div class="contact-input-wrapper">
+                            <div id="contact-input-label-message" class="contact-input-label">
+                                Message
+                            </div>
+
+                            <textarea name="message" id="contact-input-message" class="contact-input" cols="2"></textarea>
+                        </div>
+
+                        <div class="contact-input-wrapper">
+                            <div class="contact-input-empty"></div>
+
+                            <button type="submit" id="contact-input-submit" class="contact-input-button interactive-button">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </section>
         </main>
 
         <footer>
+            <div class="left">
+                <p>
+                    &copy; 2026 Ahmad Ridani
+                </p>
+            </div>
+            
+            <div class="right">
 
+            </div>
         </footer>
         <script src="script.js"></script>
     </body>
