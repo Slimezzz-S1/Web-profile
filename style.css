@@ -5,21 +5,21 @@
 :root
 {
     /*  colors  */
-    --main-color: #41d252;
-    --second-color: #0f172a;
-    --accent-color: #1f915e;
-    --accent2-color: #3c3c3c;
+    --color1: #41d252;
+    --color2: #0f172a;
+    --color3: #1f915e;
+    --color4: #3c3c3c;
 
     /*  empty sections  */
     --section-background: #181818;
 
     /*  main parts    */
-    --header-background: var(--main-color);
+    --header-background: var(--color1);
     --main-background: temp;
-    --footer-background: var(--accent2-color);
+    --footer-background: var(--color4);
 
     /*  navigation header   */
-    --nav-header-button-color: var(--accent-color);
+    --nav-header-button-color: var(--color3);
     --nav-header-button-active-color: #1f915e;
     --nav-header-button-hover-color: rgb(71, 46, 151);
 
@@ -36,10 +36,11 @@
     --service-card1-hover-background: rgb(224, 51, 12);
     --service-card2-hover-background: rgb(230, 141, 25);
     --service-card3-hover-background: rgb(31, 62, 174);
+    --service-card4-hover-background: rgb(24, 168, 43);
 
     /*  about   */
-    --about-card-background: var(--accent2-color);
-    --about-card-stats-line-inactive-background: linear-gradient(90deg, black 0%, var(--accent2-color) 70%);
+    --about-card-background: var(--color4);
+    --about-card-stats-line-inactive-background: linear-gradient(90deg, black 0%, var(--color4) 70%);
     --about-card-stats1-line-color: red;
     --about-card-stats2-line-color: green;
     --about-card-stats3-line-color: blue;
@@ -53,7 +54,7 @@
     --team-card-button-border-color: white;
 
     /*  contact */
-    --contact-card-background: var(--accent-color);
+    --contact-card-background: var(--color3);
 
     /*  misc    */
     --initial-vh: 1080;
@@ -535,6 +536,11 @@ header .nav-links li:hover
     background: var(--service-card3-hover-background);
 }
 
+#service-card4:hover
+{
+    background: var(--service-card4-hover-background);
+}
+
 .service-card .service-card-background-overlay
 {
     position: absolute;
@@ -616,7 +622,7 @@ header .nav-links li:hover
 
 #about .section-left
 {
-    background: url(Media/Pictures/main.png);
+    background: url(Media/Pictures/d411649151a8fbd5c1ce6cee889ef38b10690415_1280.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -649,6 +655,11 @@ header .nav-links li:hover
     justify-content: space-around;
     gap: 25px;
     padding: 25% 0;
+}
+
+#about #about-paragraph *
+{
+    margin-bottom: 25px;
 }
 
 #about .section-right *
@@ -768,6 +779,7 @@ header .nav-links li:hover
 
 #portfolio .portfolio-cards
 {
+    min-height: 600px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -779,12 +791,7 @@ header .nav-links li:hover
 {
     position: relative;
     width: 400px;
-    min-height: 400px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 20px;
+    height: 550px;
 
     background: var(--portfolio-card-background);
 
@@ -828,9 +835,10 @@ header .nav-links li:hover
 
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     align-items: stretch;
 
-    padding: 50% 15px 15px 15px;
+    padding: 80% 15px 15px 15px;
 
     background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0) 55%);
     background-size: 100% 300%;
@@ -856,11 +864,12 @@ header .nav-links li:hover
 
 #portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-content
 {
-    flex: 1;
+    
 }
 
 #portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-actions
 {
+    margin-top: auto;
     align-self: center;
     width: 50%;
 }
@@ -975,6 +984,11 @@ header .nav-links li:hover
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#team #team-cards .team-card .team-card-overlay .team-card-role
+{
+    text-align: center;
 }
 
 #team #team-cards .team-card .team-card-overlay .team-card-actions button
@@ -1127,84 +1141,6 @@ header .nav-links li:hover
 {
     background-color: white;
 }
-
-
-
-/*              */
-/*  MISC        */
-/*              */
-
-.body-overlay
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: 99999;
-    pointer-events: none;
-}
-
-.body-overlay *
-{
-    color: white;
-}
-
-.body-system-tray
-{
-    position: absolute;
-    bottom: 1%;
-    right: 1%;
-    width: 400px;
-    min-height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 30px;
-    padding: 15px;
-
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: black 2px dotted;
-
-    transition: bottom .5s ease;
-    pointer-events: all;
-}
-
-.body-system-tray *
-{
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-#confirm-button
-{
-    padding: 20px 10px;
-    background: none;
-
-    transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
-    border: 1px solid white;
-}
-
-#confirm-button:hover
-{
-    transform: scale(1.05);
-}
-
-#confirm-button:active
-{
-    transform: scale(0.95);
-}
-
-.body-system-tray.hidden
-{
-    bottom: -100%;
-}
-
-
-
 
 /*          */
 /*  FOOTER  */

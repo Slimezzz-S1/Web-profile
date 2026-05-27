@@ -22,6 +22,8 @@
 {
     /*  ROOT    */
 
+    --initial-vh: 1080px;
+
     --color1: #22ddae;
     --color2: #249e43;
     --color3: #b317b3;
@@ -33,6 +35,7 @@
     --main-background: temp;
     --footer-background: var(--color2);
     --card-background: #3c3c3c;
+    --overlay-background: var(--color2);
 
     /*  HEADER  */
 
@@ -76,6 +79,13 @@
 
     --portfolio-video-card-background: var(--color2);
     --portfolio-video-card-button-background: var(--color4);
+
+    --portfolio-code-card-background: var(--card-background);
+    --portfolio-code-card-header-background: var(--color3);
+
+    --portfolio-code-card1-header-background: var(--color3);
+    --portfolio-code-card2-header-background: var(--color3);
+    --portfolio-code-card3-header-background: var(--color3);
 
     /*  CONTACT */
 
@@ -199,7 +209,7 @@ section *
 .main-overlay-content-section
 {
     flex: 1;
-    background-color: #1c1c1c;
+    background-color: var(--overlay-background);
     border-radius: 40px;
     padding: 40px;
 
@@ -213,6 +223,7 @@ section *
 
 .main-overlay-navbar
 {
+    padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -327,6 +338,7 @@ header > .right #nav-header-links ul li a
 
 #home
 {
+    min-height: var(--initial-vh);
     background: var(--home-section-background);
 }
 
@@ -651,7 +663,7 @@ header > .right #nav-header-links ul li a
 {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .portfolio-video-card .bottom
@@ -687,6 +699,53 @@ header > .right #nav-header-links ul li a
     color: white;
 }
 
+/*  CODE    */
+
+#portfolio-code-overlay .main-overlay-content
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start1;
+    gap: 20px;
+}
+
+.portfolio-code-card
+{
+    width: 320px;
+    height: 400px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--card-background);
+    color: white;
+}
+
+.portfolio-code-card .top
+{
+    padding: 12px 10px;
+    border-radius: 20px;
+    background: var(--portfolio-code-card-header-background);
+}
+
+.portfolio-code-card .bottom
+{
+    overflow: scroll;
+    padding: 10px;
+}
+
+#portfolio-code-card1 .top
+{
+    background: var(--portfolio-code-card1-header-background);
+}
+
+#portfolio-code-card2 .top
+{
+    background: var(--portfolio-code-card2-header-background);
+}
+
 /*  CONTACT */
 
 #contact
@@ -698,9 +757,10 @@ header > .right #nav-header-links ul li a
 {
     display: flex;
     justify-content: center;
+    gap: 20px;
 }
 
-#contact-form
+.contact-card
 {
     padding: 35px 25px;
     border-radius: 20px;
@@ -713,18 +773,43 @@ header > .right #nav-header-links ul li a
     background: var(--contact-card-background);
 }
 
+#contact-info
+{
+    padding: 15px 15px;
+    justify-content: center;
+    gap: 20px;
+}
+
+#contact-info li
+{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#contact-info li img
+{
+    width: 25px;
+    height: 25px;
+}
+
+#contact-form .contact-input-wrapper
+{
+    width: 400px;
+}
+
 #contact-form .contact-input-wrapper *
 {
-    width: 400px;   
     height: 40px;
     background: none;
     color: white;
 }
 
-#contact-form .contact-input-wrapper *:is(input),
-#contact-form .contact-input-wrapper *:is(textarea)
+#contact-form .contact-input-wrapper input,
+#contact-form .contact-input-wrapper textarea
 {
-    width: 400px;   
+    width: 100%;
     height: 40px;
     padding: 10px 15px;
 
@@ -733,12 +818,24 @@ header > .right #nav-header-links ul li a
     background: var(--contact-form-input-background);
 }
 
+#contact-form .contact-input-wrapper textarea
+{
+    resize: vertical;
+}
+
 #contact-form .contact-input-button
 {
+    width: 100%;
     background: var(--color2);
     border: none;
     color: white;
     border-radius: 10px;
+}
+
+.contact-input-label
+{
+    display: flex;
+    align-items: center;
 }
 
 /*  FOOTER  */
@@ -790,6 +887,13 @@ footer *
     #portfolio-video-card-wrapper
     {
         justify-content: center;
+    }
+
+    /*  CONTACT */
+
+    #contact .content   
+    {
+        flex-direction: column;
     }
 }
 
@@ -883,7 +987,7 @@ footer *
                         </h1>
 
                         <div id="home-main">
-                            Creating simple front-end web design, 3D animation video content, Youtube video content, small simple python script
+                            I create simple front-end website design and front-end web development, I also do 3D, that being 3D animation, 3d rigging, 3d CG video
                         </div>
 
                         <div id="home-actions">
@@ -1135,7 +1239,7 @@ footer *
                             </p>
 
                             <div class="portfolio-card-actions">
-                                <button class="interactive-button">
+                                <button class="interactive-button" onclick="openOverlay('portfolio-code');">
                                     View detail
                                 </button>
                             </div>
@@ -1151,7 +1255,33 @@ footer *
                 </h1>
                 
                 <div class="content">
-                    <form action="contact" method="post" id="contact-form">
+                    <ul id="contact-info" class="contact-card">
+                        <li>
+                            <img src="Media/Icons/inverted/location.svg" alt="">
+
+                            <p>
+                                Jln. Ketib No.07 Sumedang
+                            </p>
+                        </li>
+
+                        <li>
+                            <img src="Media/Icons/inverted/email.svg" alt="">
+
+                            <p>
+                                ahridan799@gmail.com      
+                            </p>
+                        </li>
+
+                        <li>
+                            <img src="Media/Icons/inverted/whatsapp.svg" alt="">
+
+                            <p>
+                                62+ 858-6358-7817
+                            </p>
+                        </li>
+                    </ul>
+
+                    <form action="contact" method="post" id="contact-form" class="contact-card">
                         <div class="contact-input-wrapper">
                             <div id="contact-input-label-name" class="contact-input-label">
                                 Name
@@ -1159,6 +1289,7 @@ footer *
 
                             <input type="text" name="name" id="contact-input-name" class="contact-input" required>
                         </div>
+
                         <div class="contact-input-wrapper">
                             <div id="contact-input-label-email" class="contact-input-label">
                                 Email
@@ -1194,6 +1325,8 @@ footer *
                 </div>
             </section>
         </main>
+
+        
 
         <footer>
             <div class="left">

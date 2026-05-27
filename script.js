@@ -67,19 +67,19 @@ const aboutCards = [
         wrapper: document.querySelector('#about-card1'),
         percent: document.querySelector('#about-card-stats1-value'),
         line: document.querySelector('#about-card-stats1-line-inside'),
-        amount: 30
+        amount: 60
     },
     {
         wrapper: document.querySelector('#about-card2'),
         percent: document.querySelector('#about-card-stats2-value'),
         line: document.querySelector('#about-card-stats2-line-inside'),
-        amount: 20
+        amount: 55
     },
     {
         wrapper: document.querySelector('#about-card3'),
         percent: document.querySelector('#about-card-stats3-value'),
         line: document.querySelector('#about-card-stats3-line-inside'),
-        amount: 50
+        amount: 48
     }
 ];
 function aboutCardActionHover(aboutCard, aboutCardPercent, aboutCardLine, aboutCardAmount) {
@@ -138,20 +138,16 @@ const contactInputs = document.querySelectorAll('.contact-input');
 contactInputs.forEach((contactInput) => {
     contactInput.addEventListener('input', () => {
         if (contactInput.value) {
-            console.log('slime');
             document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden');
         }
         else {
-            console.log('not slime');
             document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden');
         }
     });
     if (contactInput.value) {
-        console.log('slime');
         document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.add('contact-hidden');
     }
     else {
-        console.log('not slime');
         document.querySelector(`#contact-input-label-${contactInput.id.replace('contact-input-', '')}`)?.classList.remove('contact-hidden');
     }
 });
