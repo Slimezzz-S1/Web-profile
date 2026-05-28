@@ -5,25 +5,30 @@
 :root
 {
     /*  colors  */
+
     --color1: #41d252;
     --color2: #0f172a;
     --color3: #1f915e;
     --color4: #3c3c3c;
 
     /*  empty sections  */
+
     --section-background: #181818;
 
     /*  main parts    */
+
     --header-background: var(--color1);
     --main-background: temp;
     --footer-background: var(--color4);
 
     /*  navigation header   */
+
     --nav-header-button-color: var(--color3);
     --nav-header-button-active-color: #1f915e;
-    --nav-header-button-hover-color: rgb(71, 46, 151);
+    --nav-header-button-hover-color: rgb(101, 180, 36);
 
     /*  sections    */
+
     --home-section-background: var(--services-section-background);
     --services-section-background: var(--section-background);
     --about-section-background: var(--section-background);
@@ -31,7 +36,12 @@
     --team-section-background: var(--section-background);
     --contact-background: var(--section-background);
 
+    /*  home    */
+
+    --home-section-image-background: url('Media/Pictures/Main/main-background.avif') no-repeat center center;
+
     /*  services    */
+
     --service-card-background: #424242;
     --service-card1-hover-background: rgb(224, 51, 12);
     --service-card2-hover-background: rgb(230, 141, 25);
@@ -39,6 +49,8 @@
     --service-card4-hover-background: rgb(24, 168, 43);
 
     /*  about   */
+
+    --about-image: url(Media/Pictures/Main/d411649151a8fbd5c1ce6cee889ef38b10690415_1280.jpg);
     --about-card-background: var(--color4);
     --about-card-stats-line-inactive-background: linear-gradient(90deg, black 0%, var(--color4) 70%);
     --about-card-stats1-line-color: red;
@@ -46,6 +58,7 @@
     --about-card-stats3-line-color: blue;
 
     /*  services    */
+
     --portfolio-card-background: none;
     --portfolio-card-button-background: none;
 
@@ -54,9 +67,11 @@
     --team-card-button-border-color: white;
 
     /*  contact */
+
     --contact-card-background: var(--color3);
 
     /*  misc    */
+    
     --initial-vh: 1080;
 }
 
@@ -273,6 +288,7 @@ header .logo-wrapper img
 
 header .logo-wrapper p
 {
+    color: white;
     font-size: 30px;
 }
 
@@ -387,7 +403,7 @@ header .nav-links li:hover
     display: flex;
     align-items: flex-end;
 
-    background: url('Media/Pictures/main.png') no-repeat center center;
+    background: var(--home-section-image-background);
     background-size: cover;
 }
 
@@ -601,7 +617,7 @@ header .nav-links li:hover
 #about,
 #about .section-body
 {
-    height: var(--initial-vh);
+    min-height: var(--initial-vh);
 }
 
 #about .section-body
@@ -622,7 +638,7 @@ header .nav-links li:hover
 
 #about .section-left
 {
-    background: url(Media/Pictures/d411649151a8fbd5c1ce6cee889ef38b10690415_1280.jpg);
+    background: var(--about-image);
     background-position: center;
     background-size: cover;
 }
@@ -860,11 +876,6 @@ header .nav-links li:hover
 #portfolio .portfolio-card .portfolio-card-overlay h2
 {
     font-size: 2rem;
-}
-
-#portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-content
-{
-    
 }
 
 #portfolio .portfolio-card .portfolio-card-overlay .portfolio-card-actions
@@ -1278,6 +1289,18 @@ footer .footer-right
         background: white;
     }
 
+    /*          */
+    /*  ABOUT   */
+    /*          */
+
+    #about,
+    #about .section-body
+    {
+        min-height: calc(var(--initial-vh) + 200px);
+    }
+
+
+    /*          */
     /*  CONTACT */
     /*          */
 

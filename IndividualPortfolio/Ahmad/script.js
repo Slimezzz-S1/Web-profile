@@ -8,16 +8,30 @@ navHeaderButtons.forEach((navHeaderButton) => {
         document.querySelector(`#${navHeaderButton.id.toString().replace('nav-header-link-', '')}`)?.scrollIntoView({ behavior: 'smooth' });
     });
 });
+//  HEADER
+const header = document.querySelector('header');
+const navMenuCheckbox = document.querySelector('#nav-menu-checkbox');
+let lastScrollTop = 0;
+window.addEventListener('scroll', () => {
+    const currentScrollTop = window.scrollY;
+    if (navMenuCheckbox.checked) {
+        lastScrollTop = currentScrollTop;
+        return;
+    }
+    if (currentScrollTop > lastScrollTop) {
+        header.classList.add('hidden');
+    }
+    else {
+        header.classList.remove('hidden');
+    }
+    lastScrollTop = currentScrollTop;
+});
 //  HOME
 //  ABOUT
 //  SKILLS
 //  PORTFOLIO
 //  CONTACT
 const contactForm = document.querySelector('#contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log('meow');
-});
 //  OVERLAY
 const portfolioVideoOverlay = `
 <div id="portfolio-video-overlay" class="main-overlay">
@@ -35,7 +49,7 @@ const portfolioVideoOverlay = `
         <div id="portfolio-video-card-wrapper" class="main-overlay-content">
             <div id="portfolio-video-card1" class="portfolio-video-card">
                 <div class="portfolio-video-card-video">
-                    <video src="Media/Videos/fire.mp4" controls></video>
+                    <video class='landscape' src="Media/Videos/fire.mp4" controls></video>
                 </div>
 
                 <div class="bottom">
@@ -43,9 +57,9 @@ const portfolioVideoOverlay = `
                         Fire.mp4
                     </h5>
 
-                    <button class="interactive-button" onclick="window.location.assign('https://youtube.com/shorts/iEzjn6NvZwE?feature=share')">
+                    <a class="interactive-button" href="https://youtube.com/shorts/iEzjn6NvZwE?feature=share">
                         View On Youtube
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -59,15 +73,15 @@ const portfolioVideoOverlay = `
                         motivation.mp4
                     </h5>
 
-                    <button class="interactive-button" onclick="window.location.assign('https://youtube.com/shorts/qI_to6H_zCY?feature=share')">
+                    <a class="interactive-button" href="https://youtube.com/shorts/qI_to6H_zCY?feature=share">
                         View On Youtube
-                    </button>
+                    </a>
                 </div>
             </div>
 
             <div id="portfolio-video=card3" class="portfolio-video-card">
                 <div class="portfolio-video-card-video">
-                    <video src="Media/Videos/skeleton banging meme.mp4" controls></video>
+                    <video class='landscape' src="Media/Videos/skeleton banging meme.mp4" controls></video>
                 </div>
 
                 <div class="bottom">
@@ -75,9 +89,9 @@ const portfolioVideoOverlay = `
                         skeleton banging meme.mp4
                     </h5>
 
-                    <button class="interactive-button" onclick="window.location.assign('https://youtube.com/shorts/H97fHxy0Mgg?feature=share')">
+                    <a class="interactive-button" href="https://youtube.com/shorts/H97fHxy0Mgg?feature=share">
                         View On Youtube
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -90,9 +104,9 @@ const portfolioVideoOverlay = `
                         slapping a watermelon.mp4
                     </h5>
 
-                    <button class="interactive-button" onclick="window.location.assign('https://youtube.com/shorts/0BzsUKt-Ank?feature=share')">
+                    <a class="interactive-button" href="https://youtube.com/shorts/0BzsUKt-Ank?feature=share">
                         View On Youtube
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -380,9 +394,6 @@ if __name__ == '__main__':
             </div>
         </div>
 `;
-function generateOverlay(titie, content) {
-    return;
-}
 function openOverlay(name) {
     console.log('test');
     if (name == 'portfolio-video') {

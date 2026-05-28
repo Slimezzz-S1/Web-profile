@@ -7,7 +7,6 @@ document.documentElement.style.setProperty('--initial-vh', initialVh + 'px')
 
 const homeSection = document.querySelector('#home') as HTMLDivElement
 
-
 homeSection.style.height = initialVh - 90 + 'px'
 
 /*          */
@@ -25,18 +24,15 @@ navHeaderButtons.forEach(navHeaderButton =>
 
 /*  TEST    */
 function navHeaderButtonBackgroundBlink() {
-    for (let i = 0; i < navHeaderButtonBackgrounds.length; i++)
+    for (let i : number = 0; i < navHeaderButtonBackgrounds.length; i++)
     {
-        (function (i)
-        {
-            setTimeout(() => {
-                navHeaderButtonBackgrounds[i].classList.add('active')
+        setTimeout(() => {
+            navHeaderButtonBackgrounds[i].classList.add('active')
 
-                setTimeout(() => {
-                    navHeaderButtonBackgrounds[i].classList.remove('active')
-                }, 1000)
-            }, i * 1000)
-        })(i)
+            setTimeout(() => {
+                navHeaderButtonBackgrounds[i].classList.remove('active')
+            }, 1000)
+        }, i * 1000)
     }
 }
 
@@ -63,10 +59,11 @@ window.addEventListener('scroll', () =>
     {
         lastScrollTop = currentScrollTop
 
-        return;
+        return
     }
 
-    if (currentScrollTop > lastScrollTop) {
+    if (currentScrollTop > lastScrollTop)
+    {
         header.classList.add('hidden')
     }
     else
@@ -112,21 +109,21 @@ const aboutCards : AboutCard[] =
         wrapper : document.querySelector('#about-card1') as HTMLDivElement,
         percent : document.querySelector('#about-card-stats1-value') as HTMLParagraphElement,
         line : document.querySelector('#about-card-stats1-line-inside') as HTMLDivElement,
-        amount : 60
+        amount : 30
     },
 
     {
         wrapper : document.querySelector('#about-card2') as HTMLDivElement,
         percent : document.querySelector('#about-card-stats2-value') as HTMLParagraphElement,
         line : document.querySelector('#about-card-stats2-line-inside') as HTMLDivElement,
-        amount : 55
+        amount : 40
     },
 
     {
         wrapper : document.querySelector('#about-card3') as HTMLDivElement,
         percent : document.querySelector('#about-card-stats3-value') as HTMLParagraphElement,
         line : document.querySelector('#about-card-stats3-line-inside') as HTMLDivElement,
-        amount : 48
+        amount : 73
     }
 ]
 
@@ -211,7 +208,215 @@ function loadLocalIcons()
 /*          */
 /*  CONTACT */
 /*          */
+
+function contactSend(formId : string)
+{
+    const overlayHTMLSuccess : string | HTMLDivElement =
+    `
+    <div class="main-overlay">
+        <div class="main-overlay-container main-overlay-notification">
+            <div id="contact-notification-point" class="notification-point">
+                <div class="notification-point-header">
+                    <div class="left title">
+                        Notification
+                    </div>
+
+                    <div class="right extra">
+                        <div id="contact-notification-point-timer" class="timer">
+                            0s
+                        </div>  
+                    </div>
+                </div>
+
+                <div class="notification-point-body">
+                    Contact sent!
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+
+    const overlayHTMLFail : string | HTMLDivElement =
+    `
+    <div class="main-overlay">
+        <div class="main-overlay-container main-overlay-notification">
+            <div id="contact-notification-point" class="notification-point">
+                <div class="notification-point-header">
+                    <div class="left title">
+                        Notification
+                    </div>
+
+                    <div class="right extra">
+                        <div id="contact-notification-point-timer" class="timer">
+                            0s
+                        </div>  
+                    </div>
+                </div>
+
+                <div class="notification-point-body">
+                    Contact did not send.
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+
+    if (!document.getElementById('main-overlay-css'))
+    {
+        const overlayCSS : HTMLStyleElement = document.createElement('style')
+    overlayCSS.id = 'main-overlay-css'
+    overlayCSS.textContent =
+    `
+@keyframes notificationSlideIn
+{
+    from
+    {
+        bottom: -100%;
+    }
+    to
+    {
+        bottom: 0;
+    }
+}
+
+@keyframes notificationSlideOut
+{
+    from
+    {
+        bottom: 0%;
+    }
+    to
+    {
+        bottom: -100%;
+    }
+}
+
+.main-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: 99999;
+    pointer-events: none;
+}
+
+.main-overlay *
+{
+    color: white;
+}
+
+.main-overlay-notification
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    max-width: 90vw;
+    max-height: 90dvh;
+    padding: 15px;
+    background: none;
+    z-index: 99999;
+
+    animation: notificationSlideIn .5s ease-out forwards;
+}
+
+.main-overlay-notification .notification-point
+{
+    padding: 15px 10px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: blue;
+}
+
+.notification-point .notification-point-header
+{
+    display: flex;  
+    align-items: center;
+}
+
+.notification-point .notification-point-header .left
+{
+    flex: 1;
+    font-size: 20px;
+}
+
+.notification-point .notification-point-header .right
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.notification-point .notification-point-header .right .cross-exit
+{
+    width: 15px;
+    height: 15px;
+}
+
+.notification-point .notification-point-header .right .cross-exit img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    `
+        document.head.appendChild(overlayCSS)
+    }
+
+    const form = document.querySelector('#' + formId) as HTMLFormElement
+    
+    let emptyInputCount : number = 0
+    const formInputs : NodeListOf<HTMLInputElement> = document.querySelectorAll('.contact-input')
+
+    formInputs.forEach(formInputs =>
+    {
+        if (formInputs.value.trim() === '')
+        {
+            emptyInputCount ++
+        }
+    })
+
+    if (emptyInputCount >= 4)
+    {
+        return
+    }
+
+    const overlayWrapper : HTMLDivElement = document.createElement('div')
+    overlayWrapper.classList.add('body-overlay-wrapper')
+    overlayWrapper.innerHTML = overlayHTMLSuccess
+    document.body.appendChild(overlayWrapper)
+
+    const mainOverlayNotification = document.querySelectorAll('.main-overlay-notification')[0] as HTMLDivElement
+    const notificationPoint = document.getElementById('contact-notification-point') as HTMLDivElement
+    const notificationTimer = document.getElementById('contact-notification-point-timer') as HTMLDivElement
+    const seconds : number = 5
+
+    for (let i : number = seconds; i > -2; i--)
+    {
+        setTimeout(() =>
+        {
+            notificationTimer.innerText = i + 's'
+
+            if (i <= -1)
+            {
+                mainOverlayNotification.style.animation = 'notificationSlideOut .4s ease forwards'
+
+                setTimeout(() => 
+                {
+                    notificationPoint.remove()
+                }, 1000)
+            }
+        }, (seconds - i) * 1000)
+    }
+}
+
 const contactInputs : NodeListOf<HTMLInputElement> = document.querySelectorAll('.contact-input')
+const contactForm = document.querySelector('#contact-form') as HTMLFormElement
 
 contactInputs.forEach((contactInput : HTMLInputElement) =>
 {
@@ -237,8 +442,25 @@ contactInputs.forEach((contactInput : HTMLInputElement) =>
     }
 })
 
-
 loadLocalIcons()
+
+let isSent : boolean = false
+
+contactForm.addEventListener('submit', (e : SubmitEvent) =>
+{
+    e.preventDefault()
+
+    if (isSent)
+    {
+        return
+    }
+
+    contactSend(contactForm.id)
+
+    isSent = true
+})
+
+
 
 /*          */
 /*  MISC    */
@@ -246,7 +468,7 @@ loadLocalIcons()
 
 function scrollIntoElement(elementID :string, key :string, e :KeyboardEvent)
 {
-    if (e.ctrlKey && e.key === key)
+    if ((e.ctrlKey && e.key === key) || (e.altKey && e.key === key))
     {
         document.getElementById(elementID)?.scrollIntoView({behavior : 'smooth'})
         return

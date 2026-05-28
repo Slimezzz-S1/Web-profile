@@ -13,53 +13,60 @@
         <nav class="navbar">
             <div class="logo">Portfolio<b>.</b></div>
             <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
-        <div class="hero-container">
+        <div id="home" class="hero-container">
             <div class="hero-content">
                 <p class="greeting">Hello, I'm</p>
-                <h1>Fullstack Developer & <br>UI Designer</h1>
+                <h1>Traditional Artist &<br> Designer</h1>
                 <p class="description">
-                    Saya adalah seorang developer yang fokus pada pengembangan aplikasi web modern, mobile app, dan sistem digital lainnya menggunakan teknologi terkini.
+                    Saya adalah seseorang di saat dimana orang orang menggunakan teknologi untuk menggambar tapi saya malah manual.
                 </p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary">Hire Me</a>
                     <a href="#" class="btn btn-secondary">Download CV</a>
                 </div>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/fazhahran/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=500" alt="Foto Profil">
+                <img src="profil.jpg" alt="Foto Profil">
             </div>
         </div>
     </header>
 
-    <section class="section about-section">
+    <section id="about" class="section about-section">
         <h2 class="section-title">About Me</h2>
         <div class="about-grid">
             <div class="card about-card">
-                <h3>Professional Developer</h3>
-                <p>Saya adalah seorang developer yang fokus pada pengembangan aplikasi web modern, mobile app, dan sistem digital lainnya menggunakan Laravel, React.js, dan Flutter.</p>
+                <h3>Menggambar</h3>
+                <p>
+                    Saya lebih suka hitam putih daripada di beri warna.
+                </p>
             </div>
             <div class="card about-card">
-                <h3>Experience</h3>
-                <p>Memiliki pengalaman dalam berbagai project berskala LMS (Learning Management System), company profile, dan aplikasi mobile modern.</p>
+                <h3>Desainer</h3>
+                <p>
+                    Saya suka membuat desain baju, poster, dan logo dengan corak yang simpel
+                </p>
+            </div>
+            <div class="card about-card">
+                <h3>Pengalaman</h3>
+                <p>
+                    Sebagai orang yang suka menggambar manual, saya sering menghabiskan waktu untuk membuat sketsa dan belajar teknik shading. Terkadang tangan menjadi kotor karena pensil atau tinta, tetapi itu menjadi hal yang menyenangkan. Menggambar juga melatih kesabaran, kreativitas, dan membuat saya senang saat hasil gambar dipuji orang lain.
+                </p>
             </div>
         </div>
     </section>
 
-    <section class="section skills-section">
+    <section id="skills" class="section skills-section">
         <h2 class="section-title">My Skills</h2>
         <div class="skills-grid">
             <div class="card skill-item">
@@ -89,34 +96,49 @@
         </div>
     </section>
 
-    <section class="section portfolio-section">
+    <section id="portfolio" class="section portfolio-section">
         <h2 class="section-title">My Portfolio</h2>
         <div class="portfolio-grid">
             <div class="portfolio-item">
                 <div class="portfolio-img">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=500" alt="Project 1">
+                    <img src="gambar2.jpeg" alt="Project 1">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Web Platform</h3>
-                    <p>Sistem LMS modern berbasis online dengan fitur lengkap.</p>
-                    <a href="#" class="btn-view">View Project</a>
+                    <h3>Manual</h3>
+                    <p>Gambar menggunakan pensil khusus.</p>
+                    <a href="#" class="btn-view">Lihat proyek</a>
                 </div>
             </div>
             <div class="portfolio-item">
                 <div class="portfolio-img">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=500" alt="Project 2">
+                    <img src="baju.jpeg" alt="Project 2">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Mobile Application</h3>
-                    <p>Aplikasi Flutter modern dengan UI responsif.</p>
-                    <a href="#" class="btn-view">View Project</a>
+                    <h3>Digital</h3>
+                    <p>Desain baju menggunakan aplikasi CorelDraw</p>
+                    <a href="#" class="btn-view">Lihat proyek</a>
                 </div>
             </div>
         </div>
     </section>
+    
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                Email : arfa@gmail.com
+            </div>
+            <div class="contact-item">
+                No. HP : +62 877-8698-7922
+            </div>
+            <div class="contact-item">
+                Location : Perum Jatihurip
+            </div>
+        </div>
+    </section>
 
-    <footer class="contact-section">
-        <h2 class="contact-title">Contact Me</h2>
+    <footer class="footer-section">
+        &copy;  2026 Arfa Zhahran Wardana
     </footer>
 
 </body>

@@ -1,7 +1,5 @@
-export function contactSend(formId : string)
-{
-    const overlayHTMLSuccess : string | HTMLDivElement =
-    `
+export function contactSend(formId) {
+    const overlayHTMLSuccess = `
     <div class="main-overlay">
         <div class="main-overlay-container main-overlay-notification">
             <div id="contact-notification-point" class="notification-point">
@@ -23,10 +21,8 @@ export function contactSend(formId : string)
             </div>
         </div>
     </div>
-    `
-
-    const overlayHTMLFail : string | HTMLDivElement =
-    `
+    `;
+    const overlayHTMLFail = `
     <div class="main-overlay">
         <div class="main-overlay-container main-overlay-notification">
             <div id="contact-notification-point" class="notification-point">
@@ -48,14 +44,12 @@ export function contactSend(formId : string)
             </div>
         </div>
     </div>
-    `
-
-    if (!document.getElementById('main-overlay-css'))
-    {
-        const overlayCSS : HTMLStyleElement = document.createElement('style')
-    overlayCSS.id = 'main-overlay-css'
-    overlayCSS.textContent =
-    `
+    `;
+    if (!document.getElementById('main-overlay-css')) {
+        const overlayCSS = document.createElement('style');
+        overlayCSS.id = 'main-overlay-css';
+        overlayCSS.textContent =
+            `
 @keyframes notificationSlideIn
 {
     from
@@ -153,54 +147,37 @@ export function contactSend(formId : string)
     height: 100%;
     object-fit: cover;
 }
-    `
-        document.head.appendChild(overlayCSS)
+    `;
+        document.head.appendChild(overlayCSS);
     }
-
-    const form = document.querySelector('#' + formId) as HTMLFormElement
-    
-    form.addEventListener('submit', (e) =>
-    {
-        e.preventDefault()
-
-        let emptyInputCount : number = 0
-        const formInputs : NodeListOf<HTMLInputElement> = document.querySelectorAll('.contact-input')
-
-        formInputs.forEach(formInputs =>
-        {
-            if (formInputs.value.trim() === '')
-            {
-                emptyInputCount ++
+    const form = document.querySelector('#' + formId);
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let emptyInputCount = 0;
+        const formInputs = document.querySelectorAll('.contact-input');
+        formInputs.forEach(formInputs => {
+            if (formInputs.value.trim() === '') {
+                emptyInputCount++;
             }
-        })
-
-        if (emptyInputCount >= 4)
-        {
-            return
+        });
+        if (emptyInputCount >= 4) {
+            return;
         }
-
-        document.body.innerHTML += overlayHTMLSuccess
-        const mainOverlayNotification = document.querySelectorAll('.main-overlay-notification')[0] as HTMLDivElement
-        const notificationPoint = document.getElementById('contact-notification-point') as HTMLDivElement
-        const notificationTimer = document.getElementById('contact-notification-point-timer') as HTMLDivElement
-        const seconds : number = 5
-
-        for (let i : number = seconds; i > -2; i--)
-        {
-            setTimeout(() =>
-            {
-                notificationTimer.innerText = i + 's'
-
-                if (i <= -1)
-                {
-                    mainOverlayNotification.style.animation = 'notificationSlideOut .4s ease forwards'
-
-                    setTimeout(() => 
-                    {
-                        notificationPoint.remove()
-                    }, 1000)
+        document.body.innerHTML += overlayHTMLSuccess;
+        const mainOverlayNotification = document.querySelectorAll('.main-overlay-notification')[0];
+        const notificationPoint = document.getElementById('contact-notification-point');
+        const notificationTimer = document.getElementById('contact-notification-point-timer');
+        const seconds = 5;
+        for (let i = seconds; i > -2; i--) {
+            setTimeout(() => {
+                notificationTimer.innerText = i + 's';
+                if (i <= -1) {
+                    mainOverlayNotification.style.animation = 'notificationSlideOut .4s ease forwards';
+                    setTimeout(() => {
+                        notificationPoint.remove();
+                    }, 1000);
                 }
-            }, (seconds - i) * 1000)
+            }, (seconds - i) * 1000);
         }
-    })
+    });
 }

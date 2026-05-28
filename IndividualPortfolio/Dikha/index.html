@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Profil Pribadi</title>
+  <style>
+    /* Reset & Fonts */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #161b22;
+      padding: 30px 40px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    header .intro {
+      max-width: 60%;
+    }
+    header h1 {
+      color: #58a6ff;
+      margin: 0 0 10px 0;
+      font-size: 2.4rem;
+    }
+    header h2 {
+      margin: 0 0 15px 0;
+      color: #c9d1d9;
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
+    header p {
+      line-height: 1.5;
+      color: #8b949e;
+      font-size: 1rem;
+    }
+    header .buttons {
+      margin-top: 15px;
+    }
+    header .btn {
+      padding: 10px 22px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 10px;
+      background-color: #238636;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    header .btn.secondary {
+      background-color: #30363d;
+      color: #8b949e;
+    }
+    header .btn:hover {
+      background-color: #2ea043;
+    }
+    header .btn.secondary:hover {
+      background-color: #484f58;
+    }
+    header img.profile-pic {
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #30363d;
+      background-color: #21262d;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+    }
+    .social-icons a {
+      color: #8b949e;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #58a6ff;
+    }
+
+    /* Section titles */
+    h3.section-title {
+      color: #58a6ff;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    /* About Me Section */
+    .about-me {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .about-card {
+      background-color: #161b22;
+      flex: 1;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(88, 166, 255, 0.15);
+    }
+    .about-card h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #58a6ff;
+      font-weight: 600;
+    }
+    .about-card p {
+      color: #8b949e;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    /* My Skills Section */
+    .skills {
+      margin-bottom: 40px;
+    }
+    .skills-list {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .skill-item {
+      background-color: #161b22;
+      padding: 15px 18px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1 1 110px;
+      box-shadow: inset 0 0 10px #238636;
+      color: #58a6ff;
+      font-weight: 600;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    .skill-item:hover {
+      background-color: #238636;
+      color: white;
+    }
+    .skill-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    /* My Portfolio Section */
+    .portfolio {
+      margin-bottom: 40px;
+    }
+    .portfolio-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .portfolio-item {
+      background-color: #161b22;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background-color: #21262d;
+    }
+    .portfolio-content {
+      padding: 15px 18px;
+      color: #8b949e;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .portfolio-content h4 {
+      margin: 0 0 8px 0;
+      color: #58a6ff;
+      font-weight: 700;
+    }
+    .portfolio-content p {
+      flex-grow: 1;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .portfolio-button {
+      align-self: flex-start;
+      padding: 8px 15px;
+      background-color: #238636;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .portfolio-button:hover {
+      background-color: #2ea043;
+    }
+
+    /* Contact Me Section */
+    .contact-me {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .contact-me h3 {
+      color: #58a6ff;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+    .contact-info {
+      font-size: 1rem;
+      color: #8b949e;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+      header .intro {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .about-me {
+        flex-direction: column;
+      }
+      .skills-list {
+        justify-content: center;
+      }
+      .portfolio-list {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  <!-- Optional: Include font-awesome for skill icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header>
+      <div class="intro">
+        <h2>Hello, I'm</h2>
+        <h1>GUSTIANA DIKHA RHAMADHAN</h1>
+        <p>
+            I am a future designer who has an interest in graphic design and visual creativity.
+             I enjoy creating attractive, creative, and easy-to-understand designs.
+              I also like learning design applications to improve my skills and produce better artwork.
+        </p>
+        </p>
+        <div class="buttons">
+          <button class="btn">Hire Me</button>
+          <button class="btn secondary">Download CV</button>  
+        </div>
+        <div class="social-icons" aria-label="Social Media Links">
+          <a href="https://github.com/username" target="_blank" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/username" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/username" target="_blank" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <img
+        class="profile-pic"
+        src="WhatsApp Image 2026-05-28 at 12.31.30.jpeg"
+        alt="Profile Photo"
+      />
+    </header>
+
+    <!-- About Me Section -->
+    <section class="about-me" aria-labelledby="about-me-title">
+      <h3 id="about-me-title" class="section-title">About Me</h3>
+
+      <div class="about-card">
+        <h4>Skills</h4>
+        <p>
+          Graphic design, Photo and video editing, Using design applications such as Canva and coral draw,
+          Creative and innovative, Able to work in a team.
+        </P>
+      </div>
+      <div class="about-card">
+        <h4>Experience</h4>
+        <p>
+          1, Creating posters for school activities</p>
+        <p>
+          2, Making simple logo designs for school assignments</p>
+        <p>
+          3. Make product packaging
+        </p>
+      </div>
+    </section>
+
+    <!-- My Skills Section -->
+    <section class="skills" aria-labelledby="skills-title">
+      <h3 id="skills-title" class="section-title">My Skills</h3>
+      <div class="skills-list">
+        <div class="skill-item" title="HTML">
+          <i class="fab fa-html5 skill-icon" style="color:#e34c26;"></i>
+          HTML
+        </div>
+        <div class="skill-item" title="CSS">
+          <i class="fab fa-css3-alt skill-icon" style="color:#1572b6;"></i>
+          CSS
+        </div>
+        <div class="skill-item" title="JavaScript">
+          <i class="fab fa-js-square skill-icon" style="color:#f7df1e;"></i>
+          JavaScript
+        </div>
+        <div class="skill-item" title="c++">
+          <i class="fab fa-react skill-icon" style="color:#61dafb;"></i>
+          c++
+        </div>
+        <div class="skill-item" title="CANVA">
+          <i class="fab fa-react skill-icon" style="color:#61fb8d;"></i>
+          CANVA
+        </div>
+    </section>
+
+    <!-- My Portfolio Section -->
+    <section class="portfolio" aria-labelledby="portfolio-title">
+      <h3 id="portfolio-title" class="section-title">My Portfolio</h3>
+      <div class="portfolio-list">
+        <article class="portfolio-item">
+          <img src="WhatsApp Image 2026-05-28 at 11.23.07.jpeg" />
+          <div class="portfolio-content">
+            <h4>Posters</h4>
+            <p>
+              Designing creative and informative posters to
+              deliver messages visually and attract audiences' attention.
+            </p>
+            <a href="#" class="portfolio-button" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </article>
+        <article class="portfolio-item">
+          <img src="WhatsApp Image 2026-05-28 at 11.31.38.jpeg" />
+          <div class="portfolio-content">
+            <h4>Logo</h4>
+            <p>
+              Creating unique and professional logos to represent identity and give a strong impression to brands or businesses.
+            </p>
+            <a href="#" class="portfolio-button" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </article>
+        <article class="portfolio-item">
+          <img src="WhatsApp Image 2026-05-28 at 12.31.11.jpeg" />
+          <div class="portfolio-content">
+            <h4>Product Packaging</h4>
+            <p>
+              Designing attractive and functional product packaging to protect products and increase their value and appeal in the market.
+            </p>
+            <a href="#" class="portfolio-button" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section class="contact-me" aria-labelledby="contact-title">
+      <h3 id="contact-title">Contact Me</h3>
+      <p class="contact-info">
+        Email: <a href="dika22@gmail.com">dika22@gmail.com</a><br />
+        Phone: +62877254632756<br />
+        Location: Sumedang, Jawa Barat
+      </p>
+    </section>
+  </div>
+</body>
+</html>
