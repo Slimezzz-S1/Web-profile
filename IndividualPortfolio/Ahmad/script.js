@@ -49,7 +49,7 @@ const portfolioVideoOverlay = `
         <div id="portfolio-video-card-wrapper" class="main-overlay-content">
             <div id="portfolio-video-card1" class="portfolio-video-card">
                 <div class="portfolio-video-card-video">
-                    <video class='landscape' src="Media/Videos/fire.mp4" controls></video>
+                    <video class='landscape' src="Media/Videos/Fire.mp4" controls></video>
                 </div>
 
                 <div class="bottom">
